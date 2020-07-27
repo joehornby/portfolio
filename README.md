@@ -1,14 +1,16 @@
 # Joseph Hornby Portfolio
-My portfolio website.
+(That's me)
 
 # Technology
 * SASS/SCSS
-* Vue.js
+* Vue
+* Nuxt
+* Contentful
 
 # License
-All content &copy; Joseph Hornby.
-
 Source code is licensed under the [MIT license](http://opensource.org/licenses/mit-license.php)
+
+This doesn't cover content.
 
 # Build / Setup
 ## install dependencies
