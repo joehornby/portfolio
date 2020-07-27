@@ -26,16 +26,22 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { 
+        rel: 'icon', 
+        type: 'image/x-icon', 
+        href: '/favicon.ico' 
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://use.typekit.net/uiv5xjo.css'
+      }
+  ],
   },
   /*
    ** Global CSS
    */
-  css: [
-    '~assets/scss/_remedy.scss',
-    '~assets/scss/_variables.scss',
-    '~assets/scss/_typography.scss'
-  ],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -58,9 +64,17 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
   axios: {
     // proxyHeaders: false
+  },
+  styleResources: {
+    scss: [
+      '@/assets/scss/_remedy.scss',
+      '@/assets/scss/_variables.scss',
+      '@/assets/scss/_typography.scss'
+    ]
   },
   /*
    ** Build configuration
