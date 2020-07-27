@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+}
+.container {
+    background-color: $light-grey;
+    padding: $spacing-small;
+    height: calc( 100% - $spacing-small - $spacing-small);
+    position: relative;
+}
+@media only screen and (min-width: $bp-md) {
+    .container {
+        padding: $spacing-large;
+        height: calc( 100% - $spacing-large - $spacing-large);
+
+    }
+}
+p + p {
+    margin-top : 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    
+    &:hover {
+        color: $orange;
+    }
+}
+
+.rotate-90-ccw {
+    position: absolute;
+    display: inline-block;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    top: 25vw;
+    left: 1rem;
+
+}
