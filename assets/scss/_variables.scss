@@ -1,0 +1,26 @@
+// -- Typography --
+
+$font-stack-text: aktiv-grotesk,'Helvetica','Arial', sans-serif;
+$font-stack-display: aktiv-grotesk-extended, 'Helvetica','Arial', sans-serif;
+
+// -- Colours --
+$light-grey:#FCFCFC;
+$dark-grey:#3D3D3D;
+$mid-grey: #CDCDCD;//#D3D3D3;
+$red: #FF004D;//#F1152F;//#FF5C00;//#FF2B2B;
+$yellow: #F5DD00;
+$orange: #FF5C00;
+$blue: #00A3FF;
+
+// -- Dimensions --
+$header-height: 3rem;
+$spacing-small: 0.25rem;
+$spacing-large: 1rem;
+
+// -- Transition --
+$transition-props: .2s cubic-bezier(.150,.403,.561,.92);
+$hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+// -- Breakpoints --
+$bp-md: 720px;
