@@ -31,7 +31,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '~assets/scss/_remedy.scss',
+    '~assets/scss/_variables.scss',
+    '~assets/scss/_typography.scss'
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins

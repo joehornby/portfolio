@@ -1,0 +1,36 @@
+// -- Typeface --
+@import url("https://use.typekit.net/uiv5xjo.css");
+
+html {
+    font-size: 20px;
+}
+
+* {
+    font-family: $font-stack-text;
+    font-weight: 400;
+    font-style: normal;
+    text-indent: 0;
+    letter-spacing: -0.01em;
+    line-height: 1.0em;
+    color: $dark-grey;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    line-height: 1em;
+    font-family: $font-stack-display;
+    font-size: 3.00rem;
+    letter-spacing: -0.08em;
+
+}
+h2 { 
+    font-family: $font-stack-text;
+    font-size: 2.00rem;
+    // font-size: calc(1rem + 1.5vw);
+    // font-size: clamp(1rem, 3vw, 2rem);
+}
+h3,h4,h5,h6 { 
+    font-size: 1.00rem; 
+}
