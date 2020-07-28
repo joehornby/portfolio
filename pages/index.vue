@@ -25,7 +25,6 @@
         client.getEntry('2fRUBWy1oY6L18nlGnKBxk')
       ])
       .then( (entry) => {
-        // console.log(entry)
         return {
           home: entry[0]
         }
