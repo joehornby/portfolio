@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
     import {createClient} from '~/plugins/contentful.js'
 
     const client = createClient()
@@ -18,10 +17,12 @@
     export default {
         asyncData ({env}) {
             return Promise.all([
-                 client.getEntries()
+                 client.getEntries({
+                     'content_type': env.CTF_PROJECT_TYPE_ID
+                 })
             ])
             .then(([entries]) => {
-                // console.log(projects.items)
+                console.log(entries)
                 return {
                     projects: entries.items
                 }
@@ -30,6 +31,3 @@
     }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
