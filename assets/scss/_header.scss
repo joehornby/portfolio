@@ -39,15 +39,9 @@
     right: 0;
     // display: grid;
     grid-template-columns: repeat( 6, 1fr );
-    grid-template-areas: "name name role role . contact";
+    grid-template-areas: "name role role . . contact";
 
     column-gap: $spacing-large;
     padding: $spacing-large;
-  }
-  .name {
-    grid-column: 1 / 3;
-  }
-  .role {
-    grid-column: 3 / 5;
   }
 }

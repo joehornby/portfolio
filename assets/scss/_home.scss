@@ -1,0 +1,75 @@
+.home {
+    height: calc( 100% - 4rem);
+    display: grid;
+    grid-template-columns: repeat( 6, 1fr );
+    grid-template-areas: " . . . . . ."
+                " .     headline    headline    headline    headline    ."
+                " .     description description description description ."
+                " .     work        work        work        work        work ";
+    grid-template-rows: 17vh min-content min-content auto;
+    row-gap: 2rem;
+    
+}
+
+.headline { 
+    grid-area: headline;
+    max-width: 35ch;
+}
+
+.description { 
+    grid-area: description;
+    max-width: 35ch;
+}
+
+.work {
+    grid-area: work;
+    
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(200px,200px) );
+    column-gap: 1rem;
+    row-gap: 1rem;
+
+}
+
+.project-card {
+    box-shadow: 6px 6px 10px 6px rgba($mid-grey,0.33);
+    border-radius: 0.5rem;
+    
+
+    width: 20vh;
+    height: 32vh;
+    
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    
+    background-size: auto 67%;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+
+    &__title {
+        height: 33%;
+        width: 100%;
+        position: relative;
+        top: 67%;
+        background-color: $light-grey;
+        
+        margin: 0;
+        padding: 1rem;
+        z-index: -1;
+
+        & > * {
+            padding: 0;
+            margin: 0;
+        }
+        h1 {
+            font-family: $font-stack-display;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        h2 {
+            font-size: 1rem;
+        }
+    }
+
+}
