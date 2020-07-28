@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <header class="header">
       <div class="name"><nuxt-link to="/">Joseph Hornby</nuxt-link></div>
       <div class="role">Creative Technology</div>
