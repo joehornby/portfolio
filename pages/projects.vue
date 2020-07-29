@@ -1,13 +1,19 @@
 <template>
     <div class="projects">
-        <h3>Selected Projects</h3>
-        <ul>
-            <li v-for="project in projects" :key="project.fields.id">
-                {{ project.fields.title }}
-            </li>
-        </ul>
+        <aside class="projects__aside">
+            <h3>Selected Projects</h3>
+            <ul>
+                <li v-for="project in projects" :key="project.fields.id">
+                    <nuxt-link :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
+                </li>
+            </ul>
+        </aside>
+        
 
-        <nuxt-child :project="project" />
+        <div class="projects__project">
+            <nuxt-child :project="project"/>
+        </div>
+
         <div class="next-project">
             <nuxt-link :to="nextProject.link">
                 <span class="next-project__text">Next up</span>
@@ -68,20 +74,31 @@
 <style lang="scss" scoped>
 
     .projects {
-        display: grid;
-        grid-template-areas: ". . ."
-                " title  img "
-                " headline img "
-                " body img "
-                " info . .";
-        grid-template-rows: 10vh auto;
-        grid-template-columns: repeat(autofit, minmax(320px, 1fr));
+        margin-top: 10vh;
+        
 
+        &__aside {
+            position: fixed;
+            right: 0;
+            width: calc( 100vw / 6 );
+            ul {
+                margin-top: 1rem;
+            }
+            li {
+                list-style: none;
+            }
+        }
+        &__project {
+            grid-area: project;
+        }
     }
 
     .next-project {
-        grid-area: next;
-        position: relative;
+        position: fixed;
+        bottom: 20vh;
+        left: 33vw;
+        padding: 0 1rem 1rem 0;
+        width: auto;
 
         &__text {
             font-weight: 700;
@@ -95,6 +112,15 @@
             position: absolute;
             left: -2rem;
             top: 0;
+        }
+    }
+    .nuxt-link-active {
+        position: relative;
+        left: 0;
+        &::before {
+            content: '\2192';
+            position: absolute;
+            left: -2rem;
         }
     }
 </style>
