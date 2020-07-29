@@ -16,8 +16,14 @@
 
         <div class="next-project">
             <nuxt-link :to="nextProject.link">
-                <span class="next-project__text">Next up</span>
+                <span class="next-project__text">{{ nextProject.buttonText }}</span>
                 <span class="next-project__title">{{ nextProject.title }}</span>
+            </nuxt-link>
+            <nuxt-link :to="'/art'">
+                <span class="next-project__art">Or check out this AI art machine</span>
+            </nuxt-link>
+            <nuxt-link :to="'/contact'" v-if="nextProject.lastProject">
+                <span class="next-project__contact">Or get in touch &rarr;</span>
             </nuxt-link>
         </div>
         
@@ -33,7 +39,8 @@
         asyncData ({env}) {
             return Promise.all([
                  client.getEntries({
-                     'content_type': env.CTF_PROJECT_TYPE_ID
+                     'content_type': env.CTF_PROJECT_TYPE_ID,
+                      order: 'fields.id'
                  })
             ])
             .then(([entries]) => {
@@ -45,26 +52,32 @@
         },
         computed: {
             project() {
-                return this.projects.find( p => p.fields.id == this.$route.params.id )
+                return this.projects.find ( p => p.fields.id == this.$route.params.id )
             },
             nextProject() {
                 let link;
                 let title;
+                let buttonText;
                 const currentId = Number.parseInt(this.$route.params.id)
 
-                console.log(`total: ${this.totalProjects}, current ID: ${currentId}`)
+                let lastProject = currentId == this.totalProjects
 
-                if ( currentId < this.totalProjects) {
-                    let nextProject = this.projects.find( p => p.fields.id == ( currentId + 1) )
-                    link = `/projects/${nextProject.fields.id}`
-                    title = nextProject.fields.title
-                } else {
+                if ( lastProject ) {
                     link = '/about'
                     title = 'Learn more about me'
+                    buttonText = "Thanks for looking"
+                } else {
+                    let nextProject = this.projects.find ( p => p.fields.id == ( currentId + 1 ) )
+                    link = `/projects/${nextProject.fields.id}`
+                    title = nextProject.fields.title
+                    buttonText = "Next project"
+                    
                 }
                 return {
                     title: title,
-                    link : link
+                    link : link,
+                    buttonText : buttonText,
+                    lastProject : lastProject
                 }
             }
         }
@@ -95,8 +108,8 @@
 
     .next-project {
         position: fixed;
-        bottom: 20vh;
-        left: 33vw;
+        top: 80vh;
+        left: calc(5 * 100vw / 6);
         padding: 0 1rem 1rem 0;
         width: auto;
 
@@ -112,6 +125,15 @@
             position: absolute;
             left: -2rem;
             top: 0;
+        }
+        &__art,
+        &__contact {
+            font-size: 0.75rem;
+            margin-top: 2rem;
+            display: block;
+        }
+        &__contact {
+            font-weight: 700;
         }
     }
     .nuxt-link-active {
