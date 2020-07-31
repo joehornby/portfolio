@@ -60,12 +60,17 @@
                 grid-area: title;
             }
             &__headline { 
-                font-size: 1rem;
-                font-weight: 700;
+                font-size: 2rem;
                 grid-area: headline;
+                max-width: 28ch;
                 }
             &__description {
                 grid-area: description;
+                max-width: 56ch;
+            }
+            &__image {
+                width: 100%;
+                height: auto;
             }
         }
 
