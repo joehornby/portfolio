@@ -20,8 +20,10 @@
                 <h3 class="project__info__label">Role</h3>
                 <p class="project__info__entry" v-for="role in project.fields.role">{{ role }}</p>
                 <h3 class="project__info__label">Tech</h3>
-                <div class="project__info--two-col">
-                    <p class="project__info__entry project__info__entry--two-col" v-for="tech in project.fields.tech">{{ tech }}</p>
+                <div class="project__info--right">
+                    <span class="project__info__entry" v-for="(tech,index) in project.fields.tech">
+                        <span>{{ tech }}</span><span v-if="index+1 < project.fields.tech.length">, </span>
+                    </span>
                 </div>
             </div>
             
@@ -70,17 +72,15 @@
         
         &__info{
             position: fixed;
-            top: 80vh;
+            top: 75vh;
             left: 0;
-            height: 33vh;
+            height: 25vh;
             padding-bottom: 1rem;
             margin-left: 1rem;
             border-top: 2px solid $dark-grey;
             width: 33vw;
 
             background-color: $light-grey;
-
-            font-size: 0.75rem;
 
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -100,7 +100,6 @@
                 margin: 0;
                 padding-top: 1rem;
                 padding-bottom: 0.2rem;;
-                font-size: 0.75rem;
             }
             &__entry {
                 font-weight: 700;
