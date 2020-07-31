@@ -113,17 +113,20 @@
 
     .next-project {
         position: fixed;
-        top: 80vh;
-        left: calc(5 * 100vw / 6);
+        top: 75vh;
+        left: calc( 50% + 1rem );//calc(5 * 100vw / 6);
         padding: 0 1rem 1rem 0;
         width: auto;
 
         &__text {
             font-weight: 700;
-            display: block;
         }
-        &__title {
+        &__title,
+        &__text {
             display: block;
+            &:hover {
+                color: $orange;
+            }
         }
         &::before {
             content: '\2192';
@@ -137,6 +140,9 @@
             display: block;
             &::after {
                 content: ' \2192'
+            }
+            &:hover { 
+                color: $orange;
             }
         }
         &__contact {
