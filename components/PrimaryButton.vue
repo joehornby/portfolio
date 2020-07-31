@@ -21,11 +21,12 @@ export default {
         width: auto;
         font-size: inherit;
         font-family: inherit;
+        font-weight: 700;
         border-radius: 10px;
         border: none;
-        height: 2rem;
+        height: 3rem;
         margin: 0;
-        padding: 0.25rem 1rem;
+        padding: 1rem 1rem;
 
         &:hover {
             background-color: rgba($dark-grey,0.7);
