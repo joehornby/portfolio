@@ -3,7 +3,7 @@
     <h1 class="headline">{{ home.fields.h1 }}</h1>
     <h2 class="description">{{ home.fields.h2 }}</h2>
     <section class="work">
-      <nuxt-link to="/projects">
+      <nuxt-link to="/projects/01">
         <primary-button>{{ home.fields.cta }}</primary-button>
       </nuxt-link>
     </section>
@@ -20,16 +20,22 @@
     components: {
       PrimaryButton
     },
+    // Get home page content
     asyncData ({env}) {
       return Promise.all([
-        client.getEntry('2fRUBWy1oY6L18nlGnKBxk')
+        client.getEntry('2fRUBWy1oY6L18nlGnKBxk'),
+        client.getEntries({
+                     'content_type': env.CTF_PROJECT_TYPE_ID,
+                      order: 'fields.id'
+                 })
       ])
-      .then( (entry) => {
+      .then( ([ homeContent, projectList ]) => {
         return {
-          home: entry[0]
+          home: homeContent,
+          projects: projectList.items
         }
       }).catch( console.error )
-    }
+    },
   }
 </script>
 
