@@ -1,15 +1,5 @@
 <template>
     <div class="projects">
-        <!-- <aside class="projects__aside">
-            <h3>Selected Projects</h3>
-            <ul>
-                <li v-for="project in projects" :key="project.fields.id">
-                    <nuxt-link :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
-                </li>
-            </ul>
-        </aside> -->
-        
-
         <div class="projects__project">
             <nuxt-child :project="project"/>
         </div>
