@@ -1,13 +1,13 @@
 <template>
     <div class="projects">
-        <aside class="projects__aside">
+        <!-- <aside class="projects__aside">
             <h3>Selected Projects</h3>
             <ul>
                 <li v-for="project in projects" :key="project.fields.id">
                     <nuxt-link :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
                 </li>
             </ul>
-        </aside>
+        </aside> -->
         
 
         <div class="projects__project">
@@ -23,7 +23,7 @@
                 <span class="next-project__art">Or check out this AI art machine</span>
             </nuxt-link>
             <nuxt-link :to="'/contact'" v-if="nextProject.lastProject">
-                <span class="next-project__contact">Or get in touch &rarr;</span>
+                <span class="next-project__contact">Or get in touch</span>
             </nuxt-link>
         </div>
         
@@ -58,9 +58,15 @@
                 let link;
                 let title;
                 let buttonText;
-                const currentId = Number.parseInt(this.$route.params.id)
+                let currentId;
 
-                let lastProject = currentId == this.totalProjects
+                if (this.$route.params.id){
+                    currentId = Number.parseInt(this.$route.params.id)
+                } else {
+                    currentId = 0
+                }
+
+                let lastProject = ( currentId == this.totalProjects )
 
                 if ( lastProject ) {
                     link = '/about'
@@ -88,7 +94,6 @@
 
     .projects {
         margin-top: 10vh;
-        
 
         &__aside {
             position: fixed;
@@ -128,9 +133,11 @@
         }
         &__art,
         &__contact {
-            font-size: 0.75rem;
             margin-top: 2rem;
             display: block;
+            &::after {
+                content: ' \2192'
+            }
         }
         &__contact {
             font-weight: 700;
