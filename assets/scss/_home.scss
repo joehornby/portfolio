@@ -7,18 +7,20 @@
                 " .     description description description description ."
                 " .     work        work        work        work        work ";
     grid-template-rows: 17vh min-content min-content auto;
-    row-gap: 2rem;
+    row-gap: 2em;
     
 }
 
 .headline { 
     grid-area: headline;
     max-width: 35ch;
+    font-size: clamp(2rem, 10vw, 3rem);
 }
 
 .description { 
     grid-area: description;
     max-width: 35ch;
+    font-size: clamp(1rem, 5vw, 2rem);
 }
 
 .work {
