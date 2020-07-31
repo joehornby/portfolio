@@ -40,18 +40,30 @@
     .project {
 
         &__text {
-            width: clamp(35ch, 100%, 33vw);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:  "title headline"
+                                    "image description";
+            gap: 2rem;
+
             &__title,
             &__headline {
                 font-family: $font-stack-text;
                 letter-spacing: -0.015em;
-                font-size: 2rem;                
+                margin: 0;            
             }
             &__title{
                 font-weight: 700;
+                font-size: 2rem;
+                grid-area: title;
             }
+            &__headline { 
+                font-size: 1rem;
+                font-weight: 700;
+                grid-area: headline;
+                }
             &__description {
-                margin-top: 2rem;
+                grid-area: description;
             }
         }
 
@@ -72,7 +84,6 @@
 
             display: grid;
             grid-template-columns: 1fr 1fr;
-
 
             &--left{
                 grid-column: 1 / 1;
