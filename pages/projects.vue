@@ -6,16 +6,22 @@
 
         <div class="next-project">
             <nuxt-link :to="nextProject.link">
-                <span class="next-project__text">{{ nextProject.buttonText }}</span>
-                <span class="next-project__title">{{ nextProject.title }}</span>
+                <strong>{{ nextProject.buttonText }}</strong> {{ nextProject.title }}
             </nuxt-link>
-            <nuxt-link :to="'/art'">
-                <span class="next-project__art">Or check out this AI art machine</span>
+            <nuxt-link :to="'/art'" class="next-project__art">
+                Or check out my AI art machine
             </nuxt-link>
-            <nuxt-link :to="'/contact'" v-if="nextProject.lastProject">
-                <span class="next-project__contact">Or get in touch</span>
+            <nuxt-link :to="'/contact'" v-if="nextProject.lastProject" class="next-project__contact">
+                Or get in touch
             </nuxt-link>
         </div>
+        <div class="external-links">
+            <a href="https://github.com/joehornby" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/joehornby/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+
+            
+        
         
     </div>
         
@@ -123,20 +129,23 @@
     .next-project {
         position: fixed;
         top: 75vh;
-        left: calc( 50% + 1rem );//calc(5 * 100vw / 6);
+        left: calc( 50% + 1rem );
         padding: 0 1rem 1rem 0;
         width: auto;
-
+        
         &__text {
             font-weight: 700;
         }
-        &__title,
-        &__text {
-            display: block;
+        &__link {
+            color: inherit;
+            transition: color $returnEasing;
             &:hover {
                 color: $orange;
+                transition: color $hoverEasing;
             }
+                
         }
+
         &::before {
             content: '\2192';
             position: absolute;
@@ -149,9 +158,6 @@
             display: block;
             &::after {
                 content: ' \2192'
-            }
-            &:hover { 
-                color: $orange;
             }
         }
         &__contact {
