@@ -6,8 +6,13 @@
 
         <div class="project__image">
             <client-only>
-                <carousel perPage="1">
-                    <slide v-for="image in project.fields.images"><img :src="image.fields.file.url" /></slide>
+                <carousel 
+                    perPage="1"
+                    navigationEnabled="true"
+                    paginationActiveColor="#3d3d3d"
+                    paginationColor="#CDCDCD"
+                    >
+                    <slide v-for="image in project.fields.images"><img v-img :src="image.fields.file.url" /></slide>
                 </carousel>
             </client-only>
         </div>
