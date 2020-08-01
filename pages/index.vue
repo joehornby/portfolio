@@ -6,6 +6,12 @@
       <nuxt-link to="/projects/01">
         <primary-button>{{ home.fields.cta }}</primary-button>
       </nuxt-link>
+      <h3>Selected Projects</h3>
+      <ul>
+          <li v-for="project in projects" :key="project.fields.id">
+              <nuxt-link :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
+          </li>
+      </ul>
     </section>
   </div>
 </template>
