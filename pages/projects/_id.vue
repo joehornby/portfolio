@@ -5,16 +5,16 @@
         <pre class="project__description">{{ project.fields.description }}</pre>
 
         <div class="project__image">
-            <client-only>
-                <carousel 
-                    perPage="1"
-                    navigationEnabled="true"
-                    paginationActiveColor="#3d3d3d"
-                    paginationColor="#CDCDCD"
-                    >
-                    <slide v-for="(image,index) in project.fields.images" :key="`image-${index}`"><img v-img :src="image.fields.file.url" /></slide>
-                </carousel>
-            </client-only>
+            <!-- <client-only> -->
+            <carousel 
+                perPage="1"
+                navigationEnabled="true"
+                paginationActiveColor="#3d3d3d"
+                paginationColor="#CDCDCD"
+                >
+                <slide v-for="(image,index) in project.fields.images" :key="`image-${index}`"><img v-img:`${project.fields.title}` :src="image.fields.file.url" /></slide>
+            </carousel>
+            <!-- </client-only> -->
         </div>
         <div class="project__info">
             <div class="project__info--left">
