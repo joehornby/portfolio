@@ -6,8 +6,8 @@
 
         <div class="project__image">
             <client-only>
-                <carousel>
-                    <slide v-for="image in project.fields.images"><img :src="image.fields.file.url"></slide>
+                <carousel perPage="1">
+                    <slide v-for="image in project.fields.images"><img :src="image.fields.file.url" /></slide>
                 </carousel>
             </client-only>
         </div>
@@ -75,6 +75,10 @@
         &__image {
             width: 100%;
             height: auto;
+
+            img {
+                object-fit: cover;
+            }
         }
 
         
