@@ -1,11 +1,16 @@
 <template>
-    <div>
-        <div class="project__text">
-            <h1 class="project__text__title">{{ project.fields.title }}</h1>
-            <h2 class="project__text__headline">{{ project.fields.headline }}</h2>
-            <pre class="project__text__description">{{ project.fields.description }}</pre>
+    <div class="project">
+        <h1 class="project__title">{{ project.fields.title }}</h1>
+        <h2 class="project__headline">{{ project.fields.headline }}</h2>
+        <pre class="project__description">{{ project.fields.description }}</pre>
+
+        <div class="project__image">
+            <client-only>
+                <carousel>
+                    <slide v-for="image in project.fields.images"><img :src="image.fields.file.url"></slide>
+                </carousel>
+            </client-only>
         </div>
-        <div class="project__image"></div>
         <div class="project__info">
             <div class="project__info--left">
                 <h3 class="project__info__label">Client</h3>
@@ -40,38 +45,36 @@
 
 <style lang="scss" scoped>
     .project {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:  "title headline"
+                                "image description";
+        gap: 2rem;
 
-        &__text {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-areas:  "title headline"
-                                    "image description";
-            gap: 2rem;
-
-            &__title,
-            &__headline {
-                font-family: $font-stack-text;
-                letter-spacing: -0.015em;
-                margin: 0;            
+           
+        &__title,
+        &__headline {
+            font-family: $font-stack-text;
+            letter-spacing: -0.015em;
+            margin: 0;            
+        }
+        &__title{
+            font-weight: 700;
+            font-size: 2rem;
+            grid-area: title;
+        }
+        &__headline { 
+            font-size: 2rem;
+            grid-area: headline;
+            max-width: 28ch;
             }
-            &__title{
-                font-weight: 700;
-                font-size: 2rem;
-                grid-area: title;
-            }
-            &__headline { 
-                font-size: 2rem;
-                grid-area: headline;
-                max-width: 28ch;
-                }
-            &__description {
-                grid-area: description;
-                max-width: 56ch;
-            }
-            &__image {
-                width: 100%;
-                height: auto;
-            }
+        &__description {
+            grid-area: description;
+            max-width: 56ch;
+        }
+        &__image {
+            width: 100%;
+            height: auto;
         }
 
         
