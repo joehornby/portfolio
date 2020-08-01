@@ -12,14 +12,14 @@
                     paginationActiveColor="#3d3d3d"
                     paginationColor="#CDCDCD"
                     >
-                    <slide v-for="image in project.fields.images"><img v-img :src="image.fields.file.url" /></slide>
+                    <slide v-for="(image,index) in project.fields.images" :key="`image-${index}`"><img v-img :src="image.fields.file.url" /></slide>
                 </carousel>
             </client-only>
         </div>
         <div class="project__info">
             <div class="project__info--left">
                 <h3 class="project__info__label">Client</h3>
-                <p class="project__info__entry" v-for="client in project.fields.clients">{{ client }}</p>
+                <p class="project__info__entry" v-for="(client,index) in project.fields.clients" :key="`client-${index}`">{{ client }}</p>
                 
                 <h3 class="project__info__label">Place and Time</h3>
                 <p class="project__info__entry" v-if="project.fields.location">{{ project.fields.location }}</p>
@@ -28,10 +28,10 @@
             </div>
             <div class="project__info--right">
                 <h3 class="project__info__label">Role</h3>
-                <p class="project__info__entry" v-for="role in project.fields.role">{{ role }}</p>
+                <p class="project__info__entry" v-for="(role, index) in project.fields.role" :key="`role-${index}`">{{ role }}</p>
                 <h3 class="project__info__label">Tech</h3>
                 <div class="project__info--right">
-                    <span class="project__info__entry" v-for="(tech,index) in project.fields.tech">
+                    <span class="project__info__entry" v-for="(tech,index) in project.fields.tech" :key="`tech-${index}`">
                         <span>{{ tech }}</span><span v-if="index+1 < project.fields.tech.length">, </span>
                     </span>
                 </div>
