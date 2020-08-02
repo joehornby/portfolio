@@ -2,12 +2,13 @@
     height: calc( 100% - 4rem);
     display: grid;
     grid-template-columns: repeat( 6, 1fr );
-    grid-template-areas: " . . . . . ."
+    grid-template-areas: 
                 " .     headline    headline    headline    headline    ."
                 " .     description description description description ."
-                " .     work        work        work        work        work ";
-    grid-template-rows: 17vh min-content min-content auto;
+                " work  work        work        work        work        work ";
+    grid-template-rows: min-content min-content; /*auto;*/
     row-gap: 2em;
+    margin-top: 17vh;
     
 }
 
@@ -25,12 +26,31 @@
 
 .work {
     grid-area: work;
-    
-    display: grid;
-    grid-template-columns: repeat( auto-fill, minmax(200px,200px) );
-    column-gap: 1rem;
-    row-gap: 1rem;
-
+    width: calc(100% - 2rem);
+    li {
+        list-style: none;
+        display: inline;
+    }
+    &__titles {
+        display: inline;
+        font-family: $font-stack-display;
+        font-weight: 900;
+        font-size: clamp(3rem, 9vw, 10rem);
+        letter-spacing: -0.08em;
+        line-height: 0.95;
+        color: yellow;
+        
+        &::after {
+            font-family: 'Montserrat', sans-serif;
+            content: '\00A0\2192\0020';
+            color: $mid-grey;
+        }
+        
+        &:hover {
+            color: $mid-grey;
+            transition: color $transition-props;
+        }  
+    }
 }
 
 .project-card {

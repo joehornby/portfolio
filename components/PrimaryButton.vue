@@ -18,15 +18,15 @@ export default {
         color: $light-grey;
         background-color: $dark-grey;
         
-        width: auto;
+        width: 18ch;
+        height: 18ch;
         font-size: inherit;
         font-family: inherit;
         font-weight: 700;
-        border-radius: 10px;
+        border-radius: 50%;
         border: none;
-        height: 3rem;
         margin: 0;
-        padding: 1rem 1rem;
+        padding: .5rem 1rem;
 
         &:hover {
             background-color: rgba($dark-grey,0.7);

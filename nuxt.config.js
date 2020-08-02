@@ -16,7 +16,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Joseph Hornby | Creative Technology',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -35,6 +35,10 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://use.typekit.net/uiv5xjo.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap&text=%E2%86%92%E2%86%97'
       }
   ],
   },

@@ -3,26 +3,14 @@
         <div class="projects__project">
             <nuxt-child :project="project"/>
         </div>
-
         <div class="next-project">
-            <nuxt-link :to="nextProject.link">
-                <strong>{{ nextProject.buttonText }}</strong> {{ nextProject.title }}
-            </nuxt-link>
-            <nuxt-link :to="'/art'" class="next-project__art">
-                Or check out my AI art machine
+            <nuxt-link :to="nextProject.link" class="next-project__next">
+                <span class="next-project__text">{{ nextProject.buttonText }}</span><span class="next-project__title">{{ nextProject.title }}</span>
             </nuxt-link>
             <nuxt-link :to="'/contact'" v-if="nextProject.lastProject" class="next-project__contact">
                 Or get in touch
             </nuxt-link>
         </div>
-        <div class="external-links">
-            <a href="https://github.com/joehornby" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/joehornby/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-
-            
-        
-        
     </div>
         
 </template>
@@ -109,49 +97,44 @@
 
     .projects {
         margin-top: 10vh;
+        margin-bottom: 4rem;
+        height: 80vh;
+        display: grid;
+        grid-template-areas: "project project"
+                             ".       next";
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 10vh;
+        gap: 2rem;
 
-        &__aside {
-            position: fixed;
-            right: 0;
-            width: calc( 100vw / 6 );
-            ul {
-                margin-top: 1rem;
-            }
-            li {
-                list-style: none;
-            }
-        }
         &__project {
             grid-area: project;
         }
     }
 
     .next-project {
-        position: fixed;
-        top: 75vh;
-        left: calc( 50% + 1rem );
-        padding: 0 1rem 1rem 0;
-        width: auto;
-        
-        &__text {
-            font-weight: 700;
+        grid-area: next;
+        &__next {
+            position: relative;
+            &::before {
+                content: '\2192';
+                position: absolute;
+                left: -1.5rem;
+            }
         }
-        &__link {
+        &__text,
+        &__title {
+            display: block;
             color: inherit;
             transition: color $returnEasing;
             &:hover {
                 color: $orange;
                 transition: color $hoverEasing;
             }
-                
         }
-
-        &::before {
-            content: '\2192';
-            position: absolute;
-            left: -2rem;
-            top: 0;
+        &__text {
+            font-weight: 700;
         }
+    
         &__art,
         &__contact {
             margin-top: 2rem;
@@ -164,6 +147,7 @@
             font-weight: 700;
         }
     }
+
     .nuxt-link-active {
         position: relative;
         left: 0;
@@ -173,4 +157,6 @@
             left: -2rem;
         }
     }
+
+    
 </style>

@@ -1,15 +1,16 @@
 <template>
   <div class="home">
-    <h1 class="headline">{{ home.fields.h1 }}</h1>
+    <!-- <h1 class="headline">{{ home.fields.h1 }}</h1> -->
     <h2 class="description">{{ home.fields.h2 }}</h2>
-    <section class="work">
+    <div class="cta">
       <nuxt-link to="/projects/01">
         <primary-button>{{ home.fields.cta }}</primary-button>
       </nuxt-link>
-      <h3>Selected Projects</h3>
+    </div>
+    <section class="work">
       <ul>
           <li v-for="project in projects" :key="project.fields.id">
-              <nuxt-link :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
+              <nuxt-link class="work__titles" :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
           </li>
       </ul>
     </section>
@@ -65,5 +66,64 @@
 </script>
 
 <style lang="scss">
-  @import url('@/assets/scss/_home.scss');
+  .home {
+    display: grid;
+    // grid-template-columns: repeat( 6, 1fr );
+    grid-template-areas: 
+                " description "
+                " cta "
+                " work ";
+    grid-template-rows: 30vh 36ch auto;
+    row-gap: 2em;
+    margin-top: calc(4rem + 7vh);
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .headline { 
+    grid-area: headline;
+    max-width: 35ch;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .description { 
+    grid-area: description;
+    max-width: 35ch;
+    font-size: clamp(1rem, 5vw, 2rem);
+  }
+  .cta {
+    grid-area: cta;
+    position: absolute;
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+
+  .work {
+    grid-area: work;
+    li {
+      list-style: none;
+      display: inline;
+    }
+    &__titles {
+      display: inline;
+      font-family: $font-stack-display;
+      font-weight: 900;
+      font-size: clamp(2rem, 9vw, 4rem);
+      letter-spacing: -0.08em;
+      line-height: 0.95;
+      color: rgba($mid-grey,0.6);
+      
+      &::after {
+        font-family: 'Montserrat', sans-serif;
+        content: '\00A0\2192\0020';
+        color: $mid-grey;
+      }
+      
+      &:hover {
+        color: $mid-grey;
+        transition: color $transition-props;
+      }  
+    }
+  }
+
 </style>

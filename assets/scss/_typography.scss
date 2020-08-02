@@ -2,7 +2,7 @@
 // import moved to nuxt.config.js
 
 html {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 * {
@@ -32,9 +32,4 @@ h2 {
 }
 h3,h4,h5,h6 { 
     font-size: 1.00rem; 
-}
-
-strong {
-    font-weight: 700;
-    color: inherit;
 }

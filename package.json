@@ -13,8 +13,11 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
+    "@nuxtjs/markdownit": "^1.2.10",
     "contentful": "^7.14.6",
+    "dompurify": "^2.0.12",
     "nuxt": "^2.13.0",
+    "nuxt-fontawesome": "^0.4.0",
     "v-img": "^0.2.0",
     "vue-carousel": "^0.18.0"
   },
