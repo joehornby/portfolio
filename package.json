@@ -16,8 +16,10 @@
     "@nuxtjs/markdownit": "^1.2.10",
     "contentful": "^7.14.6",
     "dompurify": "^2.0.12",
+    "gsap": "^3.4.2",
     "nuxt": "^2.13.0",
     "nuxt-fontawesome": "^0.4.0",
+    "nuxt-gsap": "^0.1.4",
     "v-img": "^0.2.0",
     "vue-carousel": "^0.18.0"
   },
