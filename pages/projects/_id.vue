@@ -42,7 +42,7 @@
                 </div>
                 <div class="project__details--3">
                     <h3 v-if="project.fields.url" class="project__details__label">Links</h3>
-                    <a v-for="(url, index) in project.fields.url" :key="`url-${index}`" :href="url.url" class="project__details__entry">{{ url.name }}</a>
+                    <p class="project__details__entry" v-for="(url, index) in project.fields.url" :key="`url-${index}`"><a :href="url.url">{{ url.name }}</a></p>
                 </div>            
             </div>
         </div>
@@ -157,7 +157,8 @@
             &__entry {
                 font-weight: 700;
                 margin: 0;
-                & > span {
+                & > span,
+                & > a {
                     font-weight: inherit;
                 }
             }
