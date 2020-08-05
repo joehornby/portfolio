@@ -27,6 +27,7 @@ export default {
         border: none;
         margin: 0;
         padding: .5rem 1rem;
+        z-index: 10;
 
         &:hover {
             background-color: rgba($dark-grey,0.7);
