@@ -7,6 +7,7 @@
         <primary-button>{{ home.fields.cta }}</primary-button>
       </nuxt-link>
     </div>
+    <Circles />
     <section class="work">
       <ul>
           <li v-for="project in projects" :key="project.fields.id">
@@ -20,6 +21,7 @@
 <script>
   import {createClient} from '~/plugins/contentful.js'
   import PrimaryButton from '~/components/PrimaryButton'
+  import Circles from '~/components/Circles'
 
   const client = createClient()
 
