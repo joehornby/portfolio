@@ -1,17 +1,13 @@
 <template>
   <div class="home">
-    <!-- <h1 class="headline">{{ home.fields.h1 }}</h1> -->
-    <h2 class="description">{{ home.fields.h2 }}</h2>
-    <div class="cta">
-      <nuxt-link to="/projects/01">
-        <primary-button>{{ home.fields.cta }}</primary-button>
-      </nuxt-link>
-    </div>
-    <Circles />
+    <h2 class="headline">{{ home.fields.h2 }}</h2>
     <section class="work">
+      <h2 class="work__heading">Selected Projects</h2>
       <ul>
-          <li v-for="project in projects" :key="project.fields.id">
-              <nuxt-link class="work__titles" :to="`/projects/${project.fields.id}`"> {{ project.fields.title }}</nuxt-link>
+          <li class="work__list" v-for="project in projects" :key="project.fields.id">
+              <nuxt-link class="work__titles" :to="`/projects/${project.fields.slug}`"> {{ project.fields.title }}</nuxt-link>
+              <!-- <span class="work__details" v-for="(role, index) in project.fields.role" :key="`role-${index}`">{{ role }}</span> -->
+              <span class="work__details">{{ project.fields.headline }}</span>
           </li>
       </ul>
     </section>
@@ -21,7 +17,6 @@
 <script>
   import {createClient} from '~/plugins/contentful.js'
   import PrimaryButton from '~/components/PrimaryButton'
-  import Circles from '~/components/Circles'
 
   const client = createClient()
 
@@ -69,63 +64,79 @@
 
 <style lang="scss">
   .home {
-    display: grid;
-    // grid-template-columns: repeat( 6, 1fr );
-    grid-template-areas: 
-                " description "
-                " cta "
-                " work ";
-    grid-template-rows: 30vh 36ch auto;
-    row-gap: 2em;
     margin-top: calc(4rem + 7vh);
-    margin-bottom: 3rem;
+    margin-bottom: $spacing-small;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    grid-template-areas: "headline"
+                         "work";
   }
 
   .headline { 
     grid-area: headline;
-    max-width: 35ch;
-    font-size: clamp(2rem, 10vw, 3rem);
-  }
-
-  .description { 
-    grid-area: description;
-    max-width: 35ch;
-    font-size: clamp(1rem, 5vw, 2rem);
-  }
-  .cta {
-    grid-area: cta;
-    position: absolute;
-    left: 50vw;
-    transform: translateX(-50%);
+    font-size: 2rem;
+    // max-width: 45ch;
   }
 
   .work {
+    margin-top: 30vh;
+    margin-bottom: 30vh;
     grid-area: work;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    &__heading {
+      grid-column: 1 / span 1;
+      padding-top: 0.5rem;
+    }
+
+    ul {
+      grid-column: 2 / -1;
+    }
+
     li {
       list-style: none;
-      display: inline;
+      margin-bottom: 1rem;
+      display: grid;
+      gap: 0 1rem;
+      grid-template-columns: 1fr;
+      padding-top: 0.5rem;
     }
+    
     &__titles {
-      display: inline;
-      font-family: $font-stack-display;
-      font-weight: 900;
-      font-size: clamp(2rem, 9vw, 4rem);
-      letter-spacing: -0.08em;
-      line-height: 0.95;
-      color: rgba($mid-grey,0.6);
-      
-      &::after {
-        font-family: 'Montserrat', sans-serif;
-        content: '\00A0\2192\0020';
-        color: $mid-grey;
-      }
-      
-      &:hover {
-        color: $mid-grey;
-        transition: color $transition-props;
-      }  
+      display: block;
+      letter-spacing: -0.05em;
+      color: $dark-grey; 
+      grid-column: 1 / span 1;
+    }
+    &__details {
+      display: none;
+      grid-column: 2 / span 1;
     }
   }
+
+  @media screen and (min-width: $bp-md) {
+  .home {
+    margin-bottom: $spacing-large;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: ". headline headline"
+                         "work work work ";
+    
+  }
+  .work {
+    grid-template-columns: repeat(3, 1fr);
+
+    li {
+      border-top: 0.5px solid $dark-grey;
+      grid-template-columns: 1fr 1fr;
+    }
+    &__details {
+      display: block;
+    }
+  }
+}
 
 </style>

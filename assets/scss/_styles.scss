@@ -13,6 +13,7 @@ body {
     height: calc( 100% - $spacing-small - $spacing-small);
     position: relative;
 }
+
 @media only screen and (min-width: $bp-md) {
     .container {
         padding: $spacing-large;
@@ -20,6 +21,7 @@ body {
 
     }
 }
+
 p + p {
     margin-top : 1rem;
 }
@@ -27,9 +29,11 @@ p + p {
 a {
     text-decoration: none;
     color: inherit;
+    transition: color $transition-props;
     
     &:hover {
         color: $orange;
+        transition: color $transition-props;
     }
 }
 
@@ -41,4 +45,25 @@ a {
     top: 25vw;
     left: 1rem;
 
+}
+
+/* ***
+ * Transitions
+ * ***/
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.project-enter-active,
+.project-leave-active {
+  transition: all 0.5s;
+}
+.project-enter,
+.project-leave-to {
+  opacity: 0;
 }

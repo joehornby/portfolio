@@ -7,9 +7,10 @@
             <carousel 
                 ref="carousel"
                 :perPage="carouselPerPage"
+                :paginationPosition="carouselPaginationPosition"
                 :navigationEnabled="carouselNav"
-                :paginationActiveColor="darkGrey"
-                :paginationColor="midGrey"
+                :paginationActiveColor="orange"
+                :paginationColor="lightGrey"
                 v-model="currentImage"
                 >
                 <slide v-for="(image,index) in project.fields.images" :key="`image-${index}`"><img v-img:`${project.fields.title}` :src="image.fields.file.url" /></slide>
@@ -53,12 +54,15 @@
 
 <script>
     export default {
+        scrollToTop: true,
+        transition: 'project',
         data() {
             return {
                 carouselPerPage: 1,
-                carouselNav: true,
-                darkGrey: "#3D3D3D",
-                midGrey: "#CDCDCD",
+                carouselNav: false,
+                carouselPaginationPosition: 'bottom-overlay',
+                lightGrey: '#FCFCFC',
+                orange: '#FF5C00',
                 currentImage: 0
 
             }
@@ -73,11 +77,13 @@
 <style lang="scss" scoped>
     .project {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:  "title headline"
-                              "image info";
-        gap: 2rem;
-        grid-template-rows: 10rem min-content min-content;
+        grid-template-columns: 1fr;
+        grid-template-areas:  "title"
+                              "headline"
+                              "image"
+                              "info";
+        gap: 1rem;
+        grid-template-rows: 10rem min-content min-content auto;
 
            
         &__title,
@@ -87,22 +93,22 @@
             margin: 0;            
         }
         &__title{
-            font-weight: 700;
             font-size: 2rem;
             grid-area: title;
         }
         &__headline { 
             font-size: 2rem;
             grid-area: headline;
-            max-width: 28ch;
+
             }
         &__description {
             grid-area: description;
-            max-width: 56ch;
+
         }
         &__image {
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 100%;
+            grid-area: image;
 
             img {
                 object-fit: cover;
@@ -111,58 +117,47 @@
 
         &__info {
             grid-area: info;
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 25rem auto;
-            gap: 2rem;
-            grid-template-areas: "description"
-                                 "details";
         }
 
         
         &__details{
             grid-area: details;
-            border-top: 2px solid $dark-grey;
 
-            background-color: $light-grey;
-
-            font-size: 0.8rem;
-            width: clamp(40ch, 75ch, 100%);
-
-
-            display: grid;
-            grid-template-columns: repeat(3, minmax(15ch,1fr));
-            gap: 2rem;
-
-            &--1{
-                grid-column: 1 / 1;
-            }
-            &--2 {
-                grid-column: 2 / 3;
-            }
-            &--3 {
-                grid-column: 3 / 4;
-            }
-            &--two-col {
-                display: block;
-                column-count: 2;
-            }
+            // display: grid;
+            // grid-template-columns: repeat(3, minmax(15ch,1fr));
+            // gap: 2rem;
 
             &__label {
                 margin: 0;
                 padding-top: 1rem;
-                padding-bottom: 0.2rem;
+                // padding-bottom: 0.2rem;
                 font-size: inherit;
             }
             &__entry {
-                font-weight: 700;
                 margin: 0;
-                & > span,
-                & > a {
-                    font-weight: inherit;
+                color: rgba($dark-grey, 0.6);
+                & > span {
+                    color: inherit;
                 }
             }
             
+        }
+    }
+
+    @media screen and (min-width: $bp-md) {
+        .project {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:  ". title title"
+                                ". headline headline"
+                                ". image image"
+                                ". info info";
+            &__details {
+                width: clamp(15ch, 45ch, 30%);
+                position: fixed;
+                bottom: 1rem;
+                left: 1rem;
+            }
         }
     }
 </style>
