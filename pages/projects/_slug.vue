@@ -4,16 +4,19 @@
         <h2 class="project__headline">{{ project.fields.headline }}</h2>
 
         <div class="project__image">
-            <carousel 
+            <video v-if="project.fields.video" :src="project.fields.video.fields.file.url" autoplay="true" muted="true" loop="true">
+            </video>
+            <carousel
+                v-if="project.fields.images" 
                 ref="carousel"
                 :perPage="carouselPerPage"
                 :paginationPosition="carouselPaginationPosition"
                 :navigationEnabled="carouselNav"
                 :paginationActiveColor="orange"
-                :paginationColor="lightGrey"
+                :paginationColor="midGrey"
                 v-model="currentImage"
                 >
-                <slide v-for="(image,index) in project.fields.images" :key="`image-${index}`"><img v-img:`${project.fields.title}` :src="image.fields.file.url" /></slide>
+                <slide v-for="(image,index) in project.fields.images" :key="`image-${index}`"><img v-img:`${project.fields.title}` :src="image.fields.file.url"></slide>
             </carousel>
         </div>
 
@@ -56,12 +59,26 @@
     export default {
         scrollToTop: true,
         transition: 'project',
+        head() {
+        return {
+            title: `${this.title} | ${this.project.fields.title}`,
+            meta: [
+            // // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+            // {
+            //   hid: 'description',
+            //   name: 'description',
+            //   content: 'My custom description'
+            // }
+            ]
+        }
+        },
         data() {
             return {
+                title:'Joseph Hornby',
                 carouselPerPage: 1,
                 carouselNav: false,
-                carouselPaginationPosition: 'bottom-overlay',
-                lightGrey: '#FCFCFC',
+                carouselPaginationPosition: 'bottom',
+                midGrey: '#CDCDCD',
                 orange: '#FF5C00',
                 currentImage: 0
 
