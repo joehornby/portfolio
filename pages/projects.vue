@@ -146,6 +146,7 @@
         }
         &__contact {
             font-weight: inherit;
+            margin-bottom: 3rem;
         }
     }
 
