@@ -4,11 +4,12 @@
     <section class="work">
       <h2 class="work__heading">Selected Projects</h2>
       <ul>
-          <li class="work__list" v-for="project in projects" :key="project.fields.id">
-              <nuxt-link class="work__titles" :to="`/projects/${project.fields.slug}`"> {{ project.fields.title }}</nuxt-link>
-              <!-- <span class="work__details" v-for="(role, index) in project.fields.role" :key="`role-${index}`">{{ role }}</span> -->
-              <span class="work__details">{{ project.fields.headline }}</span>
+        <nuxt-link v-for="project in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`">
+          <li class="work__list" >
+            {{ project.fields.title }}
+            <span class="work__details">{{ project.fields.headline }}</span>
           </li>
+        </nuxt-link>
       </ul>
     </section>
   </div>
@@ -101,12 +102,20 @@
       grid-template-columns: 1fr;
       padding-top: 0.5rem;
     }
+
+    &__list {
+      &:hover,
+      &:hover > * {
+        color: $orange;
+        transition: color $transition-props;
+      }
+    }
     
     &__titles {
       display: block;
       letter-spacing: -0.05em;
-      color: $dark-grey; 
       grid-column: 1 / span 1;
+      color: inherit;
     }
     &__details {
       display: none;
