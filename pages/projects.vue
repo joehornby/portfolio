@@ -5,7 +5,7 @@
         </div>
         <div class="back">
             <nuxt-link :to="`/`">
-                <p class="next-project__text">Back</p>
+                <p class="next-project__text">Home</p>
                 <p class="next-project__title">Project list</p>
             </nuxt-link>
         </div>
