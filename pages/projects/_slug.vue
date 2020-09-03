@@ -106,7 +106,7 @@
         &__headline {
             font-family: $font-stack-text;
             letter-spacing: -0.015em;
-            margin: 0;            
+            margin: 0 0 2em 0;            
         }
         &__title{
             font-size: 2rem;
