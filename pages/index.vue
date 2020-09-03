@@ -77,7 +77,7 @@
   .headline { 
     grid-area: headline;
     font-size: 2rem;
-    // max-width: 45ch;
+    max-width: 45ch;
   }
 
   .work {
