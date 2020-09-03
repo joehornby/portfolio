@@ -16,7 +16,6 @@
 
 <script>
   import {createClient} from '~/plugins/contentful.js'
-  import PrimaryButton from '~/components/PrimaryButton'
 
   const client = createClient()
 
@@ -39,9 +38,6 @@
         title: "Joseph Hornby",
         page: "Creative Technology"
       }
-    },
-    components: {
-      PrimaryButton
     },
     // Get home page content
     asyncData ({env}) {
