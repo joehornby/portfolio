@@ -7,9 +7,6 @@
             <nuxt-link :to="nextProject.link" class="next-project__next">
                 <span class="next-project__text">{{ nextProject.buttonText }}</span><span class="next-project__title">{{ nextProject.title }}</span>
             </nuxt-link>
-            <nuxt-link :to="'/contact'" v-if="nextProject.lastProject" class="next-project__contact">
-                Or get in touch
-            </nuxt-link>
         </div>
     </div>
 </template>
@@ -71,9 +68,9 @@
                     let lastProject = ( currentId == this.totalProjects )
 
                     if ( lastProject ) {
-                        link = '/about'
-                        title = 'Learn more about me'
-                        buttonText = "Thanks for looking"
+                        link = '/contact'
+                        title = 'Thanks for looking'
+                        buttonText = "Get in touch"
                     } else {
                         let nextProject = this.projects.find ( p => p.fields.id == ( currentId + 1 ) )
                         link = `/projects/${nextProject.fields.slug}`
@@ -114,11 +111,7 @@
         grid-area: next;
         &__next {
             position: relative;
-            &::before {
-                content: '\2192';
-                position: absolute;
-                left: -1.5rem;
-            }
+            
         }
         &__text,
         &__title {
@@ -127,6 +120,11 @@
         &__text {
             font-weight: inherit;
             transition: color $returnEasing;
+            &::before {
+                content: '\2192';
+                position: absolute;
+                left: -1.5rem;
+            }
             &:hover {
                 color: $orange;
                 transition: color $hoverEasing;
