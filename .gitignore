@@ -12,3 +12,4 @@ dist
 
 # Private info
 .contentful.json
+.env
