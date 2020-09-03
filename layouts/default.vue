@@ -4,8 +4,6 @@
       <div class="name"><nuxt-link to="/">Joseph Hornby</nuxt-link></div>
       <div class="role">Creative Technology<br>Design &amp; Acoustics</div>
       <div class="contact">
-        <a href="https://github.com/joehornby" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/joehornby/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <nuxt-link to="/contact">Contact</nuxt-link>
         </div>
     </header>
@@ -15,7 +13,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .header {
     padding: $spacing-small;
     background-color: rgba($light-grey, 0.9);
