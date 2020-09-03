@@ -1,11 +1,18 @@
 <template>
     <div class="projects">
         <div class="projects__project">
-            <nuxt-child :project="project"/>
+            <nuxt-child :key="$route.params.slug" :project="project"/>
+        </div>
+        <div class="back">
+            <nuxt-link :to="`/`">
+                <p class="next-project__text">Back</p>
+                <p class="next-project__title">Project list</p>
+            </nuxt-link>
         </div>
         <div class="next-project">
             <nuxt-link :to="nextProject.link" class="next-project__next">
-                <span class="next-project__text">{{ nextProject.buttonText }}</span><span class="next-project__title">{{ nextProject.title }}</span>
+                <p class="next-project__text">{{ nextProject.buttonText }}</p>
+                <p class="next-project__title">{{ nextProject.title }}</p>
             </nuxt-link>
         </div>
     </div>
@@ -97,7 +104,7 @@
         height: 80vh;
         display: grid;
         grid-template-areas: "project project project"
-                             ".       .       next";
+                             ".       back       next";
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr 10vh;
         gap: 1rem;
@@ -107,28 +114,37 @@
         }
     }
 
+    .back {
+        grid-area: back;
+        display: inline;
+    }
+
+    .back,
+    .next-project {
+        transition: color $transition-props;
+        width: max-content;
+        border-top: 0.5px solid $dark-grey;
+        padding-top:0.5rem; 
+        &:hover,
+        &:hover * {
+            color: $orange;
+            transition: color $transition-props;
+        }
+    }
+
     .next-project {
         grid-area: next;
+        
         &__next {
             position: relative;
-            
         }
         &__text,
         &__title {
             display: block;
+            margin: 0;
         }
         &__text {
             font-weight: inherit;
-            transition: color $returnEasing;
-            &::before {
-                content: '\2192';
-                position: absolute;
-                left: -1.5rem;
-            }
-            &:hover {
-                color: $orange;
-                transition: color $hoverEasing;
-            }
         }
         &__title {
             color: rgba($dark-grey, 0.6);
@@ -145,16 +161,6 @@
         &__contact {
             font-weight: inherit;
             margin-bottom: 3rem;
-        }
-    }
-
-    .nuxt-link-active {
-        position: relative;
-        left: 0;
-        &::before {
-            content: '\2192';
-            position: absolute;
-            left: -2rem;
         }
     }
 

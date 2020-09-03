@@ -4,8 +4,7 @@
         <h2 class="project__headline">{{ project.fields.headline }}</h2>
 
         <div class="project__image">
-            <video v-if="project.fields.video" :src="project.fields.video.fields.file.url" autoplay="true" muted="true" loop="true">
-            </video>
+            <video v-if="project.fields.video" :src="project.fields.video.fields.file.url" autoplay="true" muted="true" loop="true" />
             <carousel
                 v-if="project.fields.images" 
                 ref="carousel"
@@ -158,6 +157,10 @@
                 }
             }
             
+        }
+
+        video {
+            margin-bottom: 1rem;
         }
     }
 

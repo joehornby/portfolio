@@ -2,9 +2,9 @@
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <section class="work">
-      <h2 class="work__heading">Selected Projects</h2>
+      <h2 class="work__heading" id="project-list">Selected Projects</h2>
       <ul>
-        <nuxt-link v-for="project in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`">
+        <nuxt-link v-for="project in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`" prefetch>
           <li class="work__list" >
             {{ project.fields.title }}
             <span class="work__details">{{ project.fields.headline }}</span>
