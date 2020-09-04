@@ -4,7 +4,14 @@
         <h2 class="project__headline">{{ project.fields.headline }}</h2>
 
         <div class="project__image">
-            <video v-if="project.fields.video" :src="project.fields.video.fields.file.url" autoplay="true" muted="true" loop="true" />
+            <video v-if="project.fields.video" :src="project.fields.video.fields.file.url" 
+                autoplay="true" 
+                muted="true" 
+                loop="true" 
+                controls/>
+            <div class="project__live-demo">
+                <a v-if="project.fields.liveUrl" :href="project.fields.liveUrl" target="_blank">{{ project.fields.liveURLName }}</a>
+            </div>
             <carousel
                 v-if="project.fields.images" 
                 ref="carousel"
