@@ -111,6 +111,7 @@
 
         &__project {
             grid-area: project;
+            margin-bottom: 3rem;
         }
     }
 
