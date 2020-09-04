@@ -122,11 +122,15 @@
         &__headline { 
             font-size: 2rem;
             grid-area: headline;
-
-            }
+            max-width: 30ch;
+        }
+        &__live-demo {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
         &__description {
             grid-area: description;
-
+            max-width: 80ch;
         }
         &__image {
             width: auto;
