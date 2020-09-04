@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
+    <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
     <section class="work">
       <h2 class="work__heading" id="project-list">Selected Projects</h2>
       <ul>
@@ -68,6 +69,7 @@
     grid-template-columns: 1fr;
     gap: 1rem;
     grid-template-areas: "headline"
+                         "cta"
                          "work";
   }
 
@@ -77,8 +79,13 @@
     max-width: 45ch;
   }
 
+  .cta {
+    grid-area: cta;
+    margin-top: 10vh;
+  }
+
   .work {
-    margin-top: 30vh;
+    margin-top: 20vh;
     margin-bottom: 30vh;
     grid-area: work;
     display: grid;
@@ -128,6 +135,7 @@
     margin-bottom: $spacing-large;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: ". headline headline"
+                         ". cta ."
                          "work work work ";
     
   }
