@@ -168,7 +168,7 @@
     @media screen and (min-width: $bp-md) {
         .projects {
             grid-template-areas: "project project project"
-                                 "back    .       next";
+                                 ".    back       next";
         }
     }
 
