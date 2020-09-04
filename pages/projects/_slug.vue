@@ -122,7 +122,7 @@
         &__headline { 
             font-size: 2rem;
             grid-area: headline;
-            max-width: 30ch;
+            max-width: 35ch;
         }
         &__live-demo {
             margin-top: 1rem;
