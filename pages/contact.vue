@@ -27,6 +27,7 @@
     grid-area: contact;
     a {
       display: block;
+      margin-bottom: 1rem;
     }
   }
   @media screen and (min-width: $bp-md) {
