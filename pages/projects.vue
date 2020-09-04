@@ -104,7 +104,7 @@
         height: 80vh;
         display: grid;
         grid-template-areas: "project project project"
-                             ".       back       next";
+                             "back    .       next";
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr 10vh;
         gap: 1rem;
@@ -162,6 +162,13 @@
         &__contact {
             font-weight: inherit;
             margin-bottom: 3rem;
+        }
+    }
+
+    @media screen and (min-width: $bp-md) {
+        .projects {
+            grid-template-areas: "project project project"
+                                 "back    .       next";
         }
     }
 
