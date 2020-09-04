@@ -149,7 +149,7 @@
         
         &__details{
             grid-area: details;
-
+            margin-bottom: 2rem;
             // display: grid;
             // grid-template-columns: repeat(3, minmax(15ch,1fr));
             // gap: 2rem;
@@ -188,6 +188,7 @@
                 position: fixed;
                 bottom: 1rem;
                 left: 1rem;
+                margin: 0;
             }
         }
     }
