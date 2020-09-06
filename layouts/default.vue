@@ -1,19 +1,35 @@
 <template>
   <div class="container">
     <header class="header">
-      <div class="name"><nuxt-link to="/">Joseph Hornby</nuxt-link></div>
+      <a class="skip" href="#content" tabindex="0">Skip to content</a>
+      <div class="name"><nuxt-link title="home page" tabindex="0" to="/">Joseph Hornby</nuxt-link></div>
       <div class="role">Creative Technology<br>Design &amp; Acoustics</div>
       <div class="contact">
-        <nuxt-link to="/contact">Contact</nuxt-link>
+        <nuxt-link tabindex="0" to="/contact">Contact</nuxt-link>
         </div>
     </header>
 
-    <Nuxt />
+    <Nuxt id="content" />
       
   </div>
 </template>
 
 <style lang="scss" scoped>
+.skip {
+  font-size: 0.75rem;
+  position: absolute;
+  left: 50%;
+  top: 0.25rem;
+  &:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
   .header {
     padding: $spacing-small;
     background-color: rgba($light-grey, 0.9);

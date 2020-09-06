@@ -5,7 +5,7 @@
     <section class="work">
       <h2 class="work__heading" id="project-list">Selected Projects</h2>
       <ul>
-        <nuxt-link v-for="project in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`" prefetch>
+        <nuxt-link tabindex="0" v-for="project in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`" prefetch>
           <li class="work__list" >
             {{ project.fields.title }}
             <span class="work__details">{{ project.fields.headline }}</span>
@@ -82,6 +82,7 @@
   .cta {
     grid-area: cta;
     margin-top: 10vh;
+    width: max-content;
   }
 
   .work {

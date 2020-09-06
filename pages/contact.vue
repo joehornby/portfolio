@@ -28,6 +28,7 @@
     a {
       display: block;
       margin-bottom: 1rem;
+      width: max-content;
     }
   }
   @media screen and (min-width: $bp-md) {
