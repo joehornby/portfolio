@@ -13,10 +13,12 @@
         box-shadow: none;
         & * {
             color: $orange;
+            box-shadow: none;
         }
         & > * {
             outline: 0.5pt solid $dark-grey;
             outline-offset: 0.5rem;
+            box-shadow: none;
         }
     }
 }
