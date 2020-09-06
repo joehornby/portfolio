@@ -76,7 +76,7 @@
         font-size: 1rem;
         &:focus,
         &:focus-visible {
-          outline: 0.5pt solid $dark-grey;
+          outline: 1px solid $dark-grey;
           box-shadow: none;
         }
       }

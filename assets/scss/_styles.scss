@@ -8,7 +8,7 @@
     padding: 0;
     &:focus,
     &:focus-visible {
-        outline: 0.5pt solid $dark-grey;
+        outline: 1px solid $dark-grey;
         outline-offset: 0.5rem;
         box-shadow: none;
         & * {
