@@ -100,10 +100,7 @@ export default {
   },
   styleResources: {
     scss: [
-      '@/assets/scss/_remedy.scss',
       '@/assets/scss/_variables.scss',
-      '@/assets/scss/_typography.scss',
-      '@/assets/scss/_styles.scss',
     ]
   },
   /*

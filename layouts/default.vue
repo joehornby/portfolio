@@ -14,6 +14,12 @@
   </div>
 </template>
 
+<style lang="scss">
+  @import '@/assets/scss/_remedy.scss';
+  @import '@/assets/scss/_typography.scss';
+  @import '@/assets/scss/_styles.scss';
+</style>
+
 <style lang="scss" scoped>
 .skip {
   font-size: 0.75rem;
