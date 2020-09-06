@@ -4,13 +4,13 @@
             <nuxt-child :key="$route.params.slug" :project="project"/>
         </div>
         <div class="back">
-            <nuxt-link :to="`/`">
+            <nuxt-link class="alt-focus" :to="`/`">
                 <p class="next-project__text">Home</p>
                 <p class="next-project__title">Project list</p>
             </nuxt-link>
         </div>
         <div class="next-project">
-            <nuxt-link :to="nextProject.link" class="next-project__next">
+            <nuxt-link :to="nextProject.link" class="next-project__next alt-focus">
                 <p class="next-project__text">{{ nextProject.buttonText }}</p>
                 <p class="next-project__title">{{ nextProject.title }}</p>
             </nuxt-link>
@@ -97,7 +97,20 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .alt-focus {
+        &:focus,
+        &:focus-visible {
+            outline: 0px;
+            box-shadow: none;
+            
+            & * {
+                color: $orange;
+            }
+            & > * {
+                outline: 0px;
+            }
+        }
+    }
     .projects {
         margin-top: 10vh;
         margin-bottom: 4rem;
