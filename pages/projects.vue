@@ -100,7 +100,8 @@
     .alt-focus {
         &:focus,
         &:focus-visible {
-            outline: 0px;
+            outline: none !important;
+            outline-width: 0;
             box-shadow: none;
             
             & * {
