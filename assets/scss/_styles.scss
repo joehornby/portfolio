@@ -2,25 +2,44 @@
     text-shadow: none;
     background: rgba($yellow,0.5);   
 }
+/** 
+* Remove the outline on focused links when they are also active or hovered 
+* in all browsers (opinionated). 
+*/ 
+a:active, 
+a:hover { 
+    outline-width: 0; 
+} 
 
+/** 
+* Remove the inner border and padding in Firefox. 
+*/ 
+button::-moz-focus-inner, 
+[type="button"]::-moz-focus-inner, 
+[type="reset"]::-moz-focus-inner, 
+[type="submit"]::-moz-focus-inner { 
+    border-style: none; 
+    padding: 0; 
+} 
+
+/** 
+* Restore the focus styles unset by the previous rule, and add focus styling to all elements
+*/ 
+button:-moz-focusring, 
+[type="button"]:-moz-focusring, 
+[type="reset"]:-moz-focusring, 
+[type="submit"]:-moz-focusring,
+[type="text"]:focus,
+[type="email"]:focus,
+[type="textarea"]:focus,
+textarea:focus,
+a:focus { 
+    outline: 1px solid $dark-grey;
+    outline-offset: 0.5rem;
+} 
 * {
     margin: 0;
     padding: 0;
-    &:focus,
-    &:focus-visible {
-        outline: 1px solid $dark-grey;
-        outline-offset: 0.5rem;
-        box-shadow: none;
-        & * {
-            color: $orange;
-            box-shadow: none;
-        }
-        & > * {
-            outline: 0.5pt solid $dark-grey;
-            outline-offset: 0.5rem;
-            box-shadow: none;
-        }
-    }
 }
 body {
     height: 100vh;
