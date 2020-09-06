@@ -8,7 +8,7 @@
       <a href="https://www.linkedin.com/in/joehornby/">LinkedIn</a>
       <div class="contact__form">
         <h2>Contact form</h2>
-        <form name="contact" method="POST" data-netlify="true">
+        <form name="contact" method="POST" data-netlify="true" action="/thanks">
           <p>
             <label>Your Name: <input type="text" name="name" /></label>   
           </p>
@@ -44,7 +44,7 @@
     gap: 1rem;
   }
   .contact {
-    margin-top: 10vh;
+    margin-top: 5rem;
     grid-area: contact;
     a {
       display: block;
