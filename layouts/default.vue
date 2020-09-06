@@ -5,7 +5,7 @@
       <div class="name"><nuxt-link title="home page" tabindex="0" to="/">Joseph Hornby</nuxt-link></div>
       <div class="role">Creative Technology<br>Design &amp; Acoustics</div>
       <div class="contact">
-        <nuxt-link tabindex="0" to="/contact">Contact</nuxt-link>
+        <nuxt-link tabindex="0" to="/contact">Connect</nuxt-link>
         </div>
     </header>
 
