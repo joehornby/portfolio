@@ -5,14 +5,14 @@
         </div>
         <div class="back">
             <nuxt-link class="alt-focus" :to="`/`">
-                <span class="next-project__text">Home</span>
-                <span class="next-project__title">Project list</span>
+                Home /<br>
+                Project list
             </nuxt-link>
         </div>
         <div class="next-project">
             <nuxt-link :to="nextProject.link" class="next-project__next alt-focus">
-                <span class="next-project__text">{{ nextProject.buttonText }}</span>
-                <span class="next-project__title">{{ nextProject.title }}</span>
+                {{ nextProject.buttonText }}<br>
+                {{ nextProject.title }}
             </nuxt-link>
         </div>
     </div>
@@ -116,11 +116,11 @@
 
     .back {
         grid-area: back;
-        display: inline;
     }
 
     .back,
     .next-project {
+        display: inline;
         transition: color $transition-props;
         width: max-content;
         border-top: 0.5px solid $dark-grey;
