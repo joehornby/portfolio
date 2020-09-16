@@ -3,18 +3,16 @@
         <div class="projects__project">
             <nuxt-child :key="$route.params.slug" :project="project"/>
         </div>
-        <div class="back">
-            <nuxt-link class="alt-focus" :to="`/`">
-                Home /<br>
-                Project list
-            </nuxt-link>
-        </div>
-        <div class="next-project">
-            <nuxt-link :to="nextProject.link" class="next-project__next alt-focus">
-                {{ nextProject.buttonText }}<br>
-                {{ nextProject.title }}
-            </nuxt-link>
-        </div>
+        
+        <nuxt-link class="back alt-focus" :to="`/`">
+            <span class="next-project__text">Home</span>
+            <span class="next-project__title">Project list</span>
+        </nuxt-link>
+        
+        <nuxt-link :to="nextProject.link" class="next-project next-project__next alt-focus">
+            <span class="next-project__text">{{ nextProject.buttonText }}</span>
+            <span class="next-project__title">{{ nextProject.title }}</span>
+        </nuxt-link>
     </div>
 </template>
 
@@ -100,7 +98,7 @@
     .projects {
         margin-top: 10vh;
         margin-bottom: 4rem;
-        height: 80vh;
+        min-height: 80vh;
         display: grid;
         grid-template-areas: "project project project"
                              "back    .       next";
@@ -116,11 +114,12 @@
 
     .back {
         grid-area: back;
+        display: inline;
     }
 
     .back,
     .next-project {
-        display: inline;
+        height: min-content;
         transition: color $transition-props;
         width: max-content;
         border-top: 0.5px solid $dark-grey;
