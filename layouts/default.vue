@@ -5,7 +5,9 @@
       <div class="name"><nuxt-link title="home page" tabindex="0" to="/">Joseph Hornby</nuxt-link></div>
       <div class="role">Creative Technology<br>Design &amp; Acoustics</div>
       <div class="contact">
-        <nuxt-link tabindex="0" to="/contact">Connect</nuxt-link>
+        <nuxt-link tabindex="0" to="/contact">Contact</nuxt-link>
+        <a href="https://github.com/joehornby">GitHub</a>
+        <a href="https://www.linkedin.com/in/joehornby/">LinkedIn</a>
         </div>
     </header>
 
@@ -53,10 +55,8 @@
     }
     .contact {
       grid-area: contact;
-      
-      a {
-        display: inline-block;
-      }
+      display: flex;
+      flex-direction: column; 
     }
     
     
@@ -81,20 +81,21 @@
       grid-template-areas: "name role contact";
       gap: 1rem;
       padding: $spacing-large;
-    }
-
-    .contact {      
-      a {
+      .contact {    
         display: block;
-
-        &::after {
-          content: ' \002F';
-        }
-        &:last-child::after {
-          content: '';
+        a {
+          display: inline-block;
+          &::after {
+            content: ' \002F ';
+          }
+          &:last-child::after {
+            content: '';
+          }
         }
       }
     }
+
+    
   }
 
 </style>
