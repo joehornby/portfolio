@@ -97,7 +97,7 @@
 <style lang="scss" scoped>
     .projects {
         margin-top: 10vh;
-        margin-bottom: 4rem;
+        margin-bottom: 0.75rem;
         min-height: 80vh;
         display: grid;
         grid-template-areas: "project project project"
