@@ -130,7 +130,8 @@
             color: $orange;
             transition: color $transition-props;
         }
-        .alt-focus {
+        .alt-focus,
+        .alt-focus > * {
         &:focus,
         &:focus-visible {
             outline: none !important;
@@ -141,7 +142,7 @@
                 color: $orange !important;
             }
             & > * {
-                outline: 0px !important;
+                outline: none !important;
             }
         }
     }
