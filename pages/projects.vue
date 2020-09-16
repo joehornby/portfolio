@@ -5,14 +5,14 @@
         </div>
         <div class="back">
             <nuxt-link class="alt-focus" :to="`/`">
-                <p class="next-project__text">Home</p>
-                <p class="next-project__title">Project list</p>
+                <span class="next-project__text">Home</span>
+                <span class="next-project__title">Project list</span>
             </nuxt-link>
         </div>
         <div class="next-project">
             <nuxt-link :to="nextProject.link" class="next-project__next alt-focus">
-                <p class="next-project__text">{{ nextProject.buttonText }}</p>
-                <p class="next-project__title">{{ nextProject.title }}</p>
+                <span class="next-project__text">{{ nextProject.buttonText }}</span>
+                <span class="next-project__title">{{ nextProject.title }}</span>
             </nuxt-link>
         </div>
     </div>
@@ -97,21 +97,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .alt-focus {
-        &:focus,
-        &:focus-visible {
-            outline: none !important;
-            outline-width: 0;
-            box-shadow: none;
-            
-            & * {
-                color: $orange;
-            }
-            & > * {
-                outline: 0px;
-            }
-        }
-    }
     .projects {
         margin-top: 10vh;
         margin-bottom: 4rem;
@@ -145,6 +130,21 @@
             color: $orange;
             transition: color $transition-props;
         }
+        .alt-focus {
+        &:focus,
+        &:focus-visible {
+            outline: none !important;
+            outline-width: 0;
+            box-shadow: none;
+            
+            & * {
+                color: $orange !important;
+            }
+            & > * {
+                outline: 0px !important;
+            }
+        }
+    }
     }
 
     .next-project {
