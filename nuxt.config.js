@@ -21,9 +21,19 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
+        hid: 'title',
+        name: 'title',
+        content: 'Joseph Hornby / Creative Technology',
+      },
+      {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: 'Joe Hornby\'s portfolio of Creative Technology, Design, Acoustics and Spatial Audio.',
+      },
+      {
+        hid: 'robots',
+        name: 'robots',
+        content: 'index, follow',
       },
     ],
     link: [
