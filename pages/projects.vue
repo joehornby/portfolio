@@ -1,7 +1,8 @@
 <template>
     <div class="projects">
         <div class="projects__project">
-            <nuxt-child :key="$route.params.slug" :project="project"/>
+            <ProjectList v-if="project == undefined" :projects="projects" />
+            <nuxt-child else :key="$route.params.slug" :project="project"/>
         </div>
         
         <nuxt-link class="back alt-focus" :to="`/`">
@@ -56,7 +57,9 @@
             },
             computed: {
                 project() {
-                    return this.projects.find ( p => p.fields.slug == this.$route.params.slug )
+                    let project = this.projects.find ( p => p.fields.slug == this.$route.params.slug )
+                    console.log(project)
+                    return project
                 },
                 nextProject() {
                     let link;
