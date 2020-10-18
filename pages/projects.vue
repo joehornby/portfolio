@@ -5,12 +5,12 @@
             <nuxt-child else :key="$route.params.slug" :project="project"/>
         </div>
         
-        <nuxt-link class="back alt-focus" :to="`/`">
-            <span class="next-project__text">Home</span>
+        <nuxt-link v-if="project !== undefined" class="back alt-focus" to="/projects">
+            <span class="next-project__text">Back to</span>
             <span class="next-project__title">Project list</span>
         </nuxt-link>
         
-        <nuxt-link :to="nextProject.link" class="next-project next-project__next alt-focus">
+        <nuxt-link v-if="project !== undefined" :to="nextProject.link" class="next-project next-project__next alt-focus">
             <span class="next-project__text">{{ nextProject.buttonText }}</span>
             <span class="next-project__title">{{ nextProject.title }}</span>
         </nuxt-link>
@@ -41,59 +41,57 @@
             page: "Projects"
         }
         },
-            asyncData ({env}) {
-                return Promise.all([
-                    client.getEntries({
-                        'content_type': env.CTF_PROJECT_TYPE_ID,
-                        order: 'fields.id'
-                    })
-                ])
-                .then(([entries]) => {
-                    return {
-                        projects: entries.items,
-                        totalProjects: entries.total
-                    }
-                }).catch(console.error)
+        asyncData ({env}) {
+            return Promise.all([
+                client.getEntries({
+                    'content_type': env.CTF_PROJECT_TYPE_ID,
+                    order: 'fields.id'
+                })
+            ])
+            .then(([entries]) => {
+                return {
+                    projects: entries.items,
+                    totalProjects: entries.total
+                }
+            }).catch(console.error)
+        },
+        computed: {
+            project() {
+                return this.projects.find ( p => p.fields.slug == this.$route.params.slug )
             },
-            computed: {
-                project() {
-                    let project = this.projects.find ( p => p.fields.slug == this.$route.params.slug )
-                    console.log(project)
-                    return project
-                },
-                nextProject() {
-                    let link;
-                    let title;
-                    let buttonText;
-                    let currentId;
+            nextProject() {
+                let link;
+                let title;
+                let buttonText;
+                let currentId;
 
-                    if ( this.project ){
-                        currentId = this.project.fields.id
-                    } else {
-                        currentId = 1
-                    }
+                if ( this.project ){
+                    currentId = this.project.fields.id
+                } else {
+                    currentId = 1
+                }
 
-                    let lastProject = ( currentId == this.totalProjects )
+                let lastProject = ( currentId == this.totalProjects )
 
-                    if ( lastProject ) {
-                        link = '/contact'
-                        title = 'Thanks for looking'
-                        buttonText = "Get in touch"
-                    } else {
-                        let nextProject = this.projects.find ( p => p.fields.id == ( currentId + 1 ) )
-                        link = `/projects/${nextProject.fields.slug}`
-                        title = nextProject.fields.title
-                        buttonText = "Next project"
-                        
-                    }
-                    return {
-                        title: title,
-                        link : link,
-                        buttonText : buttonText,
-                        lastProject : lastProject
-                    }
+                if ( lastProject ) {
+                    link = '/contact'
+                    title = 'Thanks for looking'
+                    buttonText = "Get in touch"
+                } else {
+                    let nextProject = this.projects.find ( p => p.fields.id == ( currentId + 1 ) )
+                    link = `/projects/${nextProject.fields.slug}`
+                    title = nextProject.fields.title
+                    buttonText = "Next project"
+                    
+                }
+                return {
+                    title: title,
+                    link : link,
+                    buttonText : buttonText,
+                    lastProject : lastProject
                 }
             }
+        }
     }
 </script>
 
