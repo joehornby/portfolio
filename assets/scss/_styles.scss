@@ -34,7 +34,6 @@ button:-moz-focusring,
 [type="textarea"]:focus,
 textarea:focus,
 a:focus { 
-    margin: 0;
     outline: 1px solid $dark-grey;
     outline-offset: 0;
 } 
