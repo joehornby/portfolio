@@ -2,17 +2,7 @@
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
-    <section class="work">
-      <h2 class="work__heading" id="project-list">Selected Projects</h2>
-      <ul>
-        <nuxt-link tabindex="0" v-for="project in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`" prefetch>
-          <li class="work__list" >
-            {{ project.fields.title }}
-            <span class="work__details">{{ project.fields.headline }}</span>
-          </li>
-        </nuxt-link>
-      </ul>
-    </section>
+    <ProjectList :projects="projects" />
   </div>
 </template>
 
@@ -132,25 +122,25 @@
   }
 
   @media screen and (min-width: $bp-md) {
-  .home {
-    margin-bottom: $spacing-large;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: ". headline headline"
-                         ". cta ."
-                         "work work work ";
-    
-  }
-  .work {
-    grid-template-columns: repeat(3, 1fr);
+    .home {
+      margin-bottom: $spacing-large;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: ". headline headline"
+                          ". cta ."
+                          "work work work ";
+      
+    }
+    .work {
+      grid-template-columns: repeat(3, 1fr);
 
-    li {
-      border-top: 0.5px solid $dark-grey;
-      grid-template-columns: 1fr 1fr;
-    }
-    &__details {
-      display: block;
+      li {
+        border-top: 0.5px solid $dark-grey;
+        grid-template-columns: 1fr 1fr;
+      }
+      &__details {
+        display: block;
+      }
     }
   }
-}
 
 </style>
