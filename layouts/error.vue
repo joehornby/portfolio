@@ -5,7 +5,7 @@
       <h1 v-else>Something's not right.</h1>
       <p>I hope the links below will get you back on track.</p>
       <nuxt-link to="/">Home page</nuxt-link>
-      <nuxt-link to="/projects">Portfolio</nuxt-link>
+      <nuxt-link to="/projects">Project list</nuxt-link>
       <nuxt-link to="/contact">Contact</nuxt-link>
     </div>
   </div>
