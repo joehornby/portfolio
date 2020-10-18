@@ -3,7 +3,7 @@
     <header class="header">
       <a class="skip" href="#content" tabindex="0">Skip to content</a>
       <div class="name"><nuxt-link title="home page" tabindex="0" to="/">Joseph Hornby</nuxt-link></div>
-      <div class="role">Creative Technology<br>Design &amp; Acoustics</div>
+      <div class="role">Creative Technology</div>
       <div class="contact">
         <nuxt-link tabindex="0" to="/contact">Contact</nuxt-link>
         <a href="https://github.com/joehornby">GitHub</a>
