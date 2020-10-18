@@ -16,12 +16,6 @@
       return {
         title: `${this.title} | ${this.page}`,
         meta: [
-          // // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-          // {
-          //   hid: 'description',
-          //   name: 'description',
-          //   content: 'My custom description'
-          // }
         ]
       }
     },
@@ -34,7 +28,7 @@
     // Get home page content
     asyncData ({env}) {
       return Promise.all([
-        client.getEntry('2fRUBWy1oY6L18nlGnKBxk'),
+        client.getEntry(process.env.CTF_HOME_PAGE_ID),
         client.getEntries({
                      'content_type': env.CTF_PROJECT_TYPE_ID,
                       order: 'fields.id'
