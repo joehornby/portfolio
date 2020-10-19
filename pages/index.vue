@@ -2,19 +2,16 @@
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
+    <!-- <ProjectListVideo :projects="projects.slice(0,3)" /> -->
     <ProjectList :projects="projects" />
   </div>
 </template>
 
 <script>
-  import {createClient} from '~/plugins/contentful.js'
-
-  const client = createClient()
-
   export default {
     head() {
       return {
-        title: `${this.title} | ${this.page}`,
+        title: `${this.title} | ${this.subtitle}`,
         meta: [
         ]
       }
@@ -22,24 +19,18 @@
     data() {
       return {
         title: "Joseph Hornby",
-        page: "Creative Technology"
+        subtitle: "Creative Technology",
+        pageName: "Home"
       }
     },
-    // Get home page content
-    asyncData ({env}) {
-      return Promise.all([
-        client.getEntry(process.env.CTF_HOME_PAGE_ID),
-        client.getEntries({
-                     'content_type': env.CTF_PROJECT_TYPE_ID,
-                      order: 'fields.id'
-                 })
-      ])
-      .then( ([ homeContent, projectList ]) => {
-        return {
-          home: homeContent,
-          projects: projectList.items
-        }
-      }).catch( console.error )
+    // Get content from store
+    computed: {
+      home() {
+        return this.$store.state.homepage
+      },
+      projects() {
+        return this.$store.state.projects
+      }
     },
   }
 </script>
@@ -97,7 +88,7 @@
 
     &__list {
       &:hover,
-      &:hover > * {
+      &:hover > span {
         color: $orange;
         transition: color $transition-props;
       }

@@ -1,11 +1,15 @@
 import dotenv from "dotenv"; dotenv.config();
 
+const contentful = require("contentful");
+const client = contentful.createClient({
+  space: process.env.CTF_SPACE_ID,
+  accessToken: process.env.CTF_CDA_ACCESS_TOKEN
+});
+
 export default {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
+
+  /* Dev Tools */
+  devtools: true,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -83,7 +87,9 @@ export default {
    */
   plugins: [
     { src: './plugins/vue-carousel.js', mode: 'client' },
-    './plugins/vue-img.js'
+    './plugins/vue-img.js',
+    "~/plugins/homepage",
+    "~/plugins/projects"
   ],
   /*
    ** Auto import components
@@ -117,7 +123,13 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    extend(config, ctx) {
+      config.node = {
+        fs: "empty"
+      };
+    }
+  },
 
   /*
   ** Contentful env variables
@@ -126,6 +138,7 @@ export default {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_PROJECT_TYPE_ID: process.env.CTF_PROJECT_TYPE_ID,
-    CTF_PAGE_TYPE_ID: process.env.CTF_PAGE_TYPE_ID
+    CTF_PAGE_TYPE_ID: process.env.CTF_PAGE_TYPE_ID,
+    CTF_HOME_PAGE_ID: process.env.CTF_HOME_PAGE_ID
   }
 }

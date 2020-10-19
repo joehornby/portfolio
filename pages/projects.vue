@@ -17,14 +17,11 @@
     </div>
 </template>
 
-<script>
-    import {createClient} from '~/plugins/contentful.js'
-    const client = createClient()
-    
+<script>    
     export default {
         head() {
         return {
-            title: `${this.title} | ${this.page}`,
+            title: `${this.title} | ${this.pageTitle}`,
             meta: [
             // // hid is used as unique identifier. Do not use `vmid` for it as it will not work
             // {
@@ -38,26 +35,15 @@
         data() {
         return {
             title: "Joseph Hornby",
-            page: "Projects"
+            pageTitle: "Projects"
         }
-        },
-        asyncData ({env}) {
-            return Promise.all([
-                client.getEntries({
-                    'content_type': env.CTF_PROJECT_TYPE_ID,
-                    order: 'fields.id'
-                })
-            ])
-            .then(([entries]) => {
-                return {
-                    projects: entries.items,
-                    totalProjects: entries.total
-                }
-            }).catch(console.error)
         },
         computed: {
             project() {
-                return this.projects.find ( p => p.fields.slug == this.$route.params.slug )
+                return this.$store.state.projects.find ( p => p.fields.slug == this.$route.params.slug )
+            },
+            totalProjects() {
+                return this.$store.state.projects.length
             },
             nextProject() {
                 let link;
@@ -78,7 +64,7 @@
                     title = 'Thanks for looking'
                     buttonText = "Get in touch"
                 } else {
-                    let nextProject = this.projects.find ( p => p.fields.id == ( currentId + 1 ) )
+                    let nextProject = this.$store.state.projects.find ( p => p.fields.id == ( currentId + 1 ) )
                     link = `/projects/${nextProject.fields.slug}`
                     title = nextProject.fields.title
                     buttonText = "Next project"

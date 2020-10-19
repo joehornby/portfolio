@@ -2,7 +2,7 @@
   <div class="container">
     <header class="header">
       <a class="skip" href="#content" tabindex="0">Skip to content</a>
-      <div class="name"><nuxt-link title="home page" tabindex="0" to="/">Joseph Hornby</nuxt-link></div>
+      <div class="name"><nuxt-link title="home page" tabindex="0" exact :to="`/`">Joseph Hornby</nuxt-link></div>
       <div class="role">Creative Technology</div>
       <div class="contact">
         <nuxt-link tabindex="0" to="/contact">Contact</nuxt-link>
