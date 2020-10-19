@@ -1,16 +1,16 @@
 <template>
     <div class="projects">
         <div class="projects__project">
-            <ProjectList v-if="project == undefined" :projects="projects" />
+            <ProjectList v-if="isProjectsRoot" :projects="projects" />
             <nuxt-child else :key="$route.params.slug" :project="project"/>
         </div>
         
-        <nuxt-link v-if="project !== undefined" class="back alt-focus" to="/projects">
+        <nuxt-link v-if="!isProjectsRoot" class="back alt-focus" to="/projects">
             <span class="next-project__text">Back to</span>
             <span class="next-project__title">Project list</span>
         </nuxt-link>
         
-        <nuxt-link v-if="project !== undefined" :to="nextProject.link" class="next-project next-project__next alt-focus">
+        <nuxt-link v-if="!isProjectsRoot" :to="nextProject.link" class="next-project next-project__next alt-focus">
             <span class="next-project__text">{{ nextProject.buttonText }}</span>
             <span class="next-project__title">{{ nextProject.title }}</span>
         </nuxt-link>
@@ -39,8 +39,14 @@
         }
         },
         computed: {
+            isProjectsRoot() {
+                return this.$route.name === 'projects'
+            },
             project() {
                 return this.$store.state.projects.find ( p => p.fields.slug == this.$route.params.slug )
+            },
+            projects() {
+                return this.$store.state.projects
             },
             totalProjects() {
                 return this.$store.state.projects.length
@@ -51,7 +57,7 @@
                 let buttonText;
                 let currentId;
 
-                if ( this.project ){
+                if ( this.project.fields.id != undefined ){
                     currentId = this.project.fields.id
                 } else {
                     currentId = 1
