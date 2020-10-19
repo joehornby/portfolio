@@ -12,11 +12,12 @@
                 {{ category }}
               </li>
             </ul>
-            <video v-if="project.fields.video && index < 3" :src="project.fields.video.fields.file.url" 
+            <video v-if="project.fields.video" :src="project.fields.video.fields.file.url" 
                 autoplay="true" 
                 muted="true" 
                 loop="true" 
                 controls />
+            
           </li>
         </nuxt-link>
       </ul>
@@ -50,8 +51,8 @@ export default {
     border: none;
     display: inline-block;
     padding-right: 1rem;
-    margin: 0;
   }
+
   video {
     grid-column: 1 / -1;
   }
@@ -61,4 +62,6 @@ export default {
       grid-column: 2 / span 1;
     }
   }
+  
+
 </style>
