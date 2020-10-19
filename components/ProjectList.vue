@@ -45,6 +45,9 @@ export default {
       font-weight: 600;
       margin-top: 2rem;
     }
+    &__categories {
+      margin-bottom: 1rem;
+    }
   }
   li.work__category {
     border: none;
