@@ -29,7 +29,10 @@
     width: calc(100% - 2rem);
     li {
         list-style: none;
-        display: inline;
+        // display: inline;
+        a {
+            display: block;
+        }
     }
     &__titles {
         display: inline;

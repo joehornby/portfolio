@@ -6,7 +6,7 @@
           <li class="work__list" >
             {{ project.fields.title }}
             <span class="work__details">{{ project.fields.headline }}</span>
-            <h4 class="work__category-title">Categories</h4>
+            <h3 class="work__category-title">Categories</h3>
             <ul class="work__categories">
               <li v-for="category in projects[index].fields.categories" :key="category" class="work__category">
                 {{ category }}
