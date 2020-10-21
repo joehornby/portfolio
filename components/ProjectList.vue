@@ -12,7 +12,7 @@
                 {{ category }}
               </li>
             </ul>
-            <video v-if="project.fields.video && index < 3" :src="project.fields.video.fields.file.url" 
+            <video v-if="project.fields.video && index < 6" :src="project.fields.video.fields.file.url" 
                 autoplay="true" 
                 muted="true" 
                 loop="true" 
