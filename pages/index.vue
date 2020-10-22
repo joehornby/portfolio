@@ -77,22 +77,7 @@
       grid-column: 2 / -1;
     }
 
-    li {
-      list-style: none;
-      margin-bottom: 1rem;
-      display: grid;
-      gap: 0 1rem;
-      grid-template-columns: 1fr;
-      padding-top: 0.5rem;
-    }
 
-    &__list {
-      &:hover,
-      &:hover > span {
-        color: $orange;
-        transition: color $transition-props;
-      }
-    }
     
     &__titles {
       display: block;
@@ -114,17 +99,6 @@
                           ". cta ."
                           "work work work ";
       
-    }
-    .work {
-      grid-template-columns: repeat(3, 1fr);
-
-      li {
-        border-top: 0.5px solid $dark-grey;
-        grid-template-columns: 1fr 1fr;
-      }
-      &__details {
-        display: block;
-      }
     }
   }
 
