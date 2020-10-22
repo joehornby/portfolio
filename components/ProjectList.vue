@@ -2,11 +2,15 @@
   <div class="work">
       <h2 class="work__heading" id="project-list">Selected Projects</h2>
       <ul>
-        <nuxt-link tabindex="0" v-for="(project, index) in projects" :key="project.fields.id" :to="`/projects/${project.fields.slug}`" prefetch>
-          <li class="work__list" >
-            {{ project.fields.title }}
-            <span class="work__details">{{ project.fields.headline }}</span>
-            <h3 class="work__category-title">Categories</h3>
+        <li class="work__list" v-for="(project, index) in projects" :key="project.fields.id">
+          <nuxt-link tabindex="0" :to="`/projects/${project.fields.slug}`" prefetch>
+            <h3 class="work__title">
+              {{ project.fields.title }}
+            </h3>
+          </nuxt-link>
+          <p class="work__details">
+              {{ project.fields.headline }}
+          </p>
             <ul class="work__categories">
               <li v-for="category in projects[index].fields.categories" :key="category" class="work__category">
                 {{ category }}
@@ -17,8 +21,8 @@
                 muted="true" 
                 loop="true" 
                 controls />
-          </li>
-        </nuxt-link>
+          
+        </li>
       </ul>
     </div>
 </template>
