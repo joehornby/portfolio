@@ -109,7 +109,13 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    ['nuxt-lazy-load', {
+      images: true,
+      videos: true,
+      polyfill: true,
+      directiveOnly: false
+    }]
   ],
   axios: {
     // proxyHeaders: false
