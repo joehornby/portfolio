@@ -23,6 +23,7 @@
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-gsap": "^0.1.4",
     "nuxt-lazy-load": "^1.2.4",
+    "nuxt-mq": "^2.0.1",
     "v-img": "^0.2.0",
     "vue-carousel": "^0.18.0"
   },

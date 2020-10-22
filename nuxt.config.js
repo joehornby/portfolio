@@ -115,6 +115,15 @@ export default {
       videos: true,
       polyfill: true,
       directiveOnly: false
+    }],
+    ['nuxt-mq',
+    {
+      defaultBreakpoint: 'md',
+      breakpoints: {
+        sm: 720,
+        md: 1024,
+        lg: Infinity,
+      }
     }]
   ],
   axios: {
