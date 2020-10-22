@@ -37,13 +37,34 @@ export default {
 
 <style lang="scss" scoped>
   .work {
+    grid-area: work;
+    width: 100%;
+    li {
+      border-top: 1px solid $dark-grey;
+        list-style: none;
+        margin-bottom: 1rem;
+        display: grid;
+        gap: 0 1rem;
+        grid-template-columns: 1fr;
+        padding-top: 0.5rem;
+        p {
+          padding-bottom: 1rem;
+        }
+        a {
+          &:hover > h3,
+          &:hover ~ p {
+            color: $orange;
+            transition: color $transition-props;
+          } 
+        }
+    }
+    &__title {
+      font-weight: 600;
+    }
     &__category-title,
     &__categories {
       grid-column: 1 / span 1;
       font-size: 0.66em;
-      &:hover {
-        cursor: default;
-      }
     }
     &__category-title {
       font-weight: 600;
@@ -61,6 +82,19 @@ export default {
   }
   video {
     grid-column: 1 / -1;
+  }
+
+  @media screen and (min-width: $bp-md) {
+    .work {
+      grid-template-columns: repeat(3, 1fr);
+
+      li {
+        grid-template-columns: 1fr 1fr;
+      }
+      &__details {
+        display: block;
+      }
+    }
   }
 
   @media screen and (min-width: 1024px) {
