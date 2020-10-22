@@ -16,7 +16,7 @@
                 {{ category }}
               </li>
             </ul>
-            <video v-if="project.fields.video && index < 6" :src="project.fields.video.fields.file.url" 
+            <video v-if="project.fields.video && index < 6 && displayVideos" :src="project.fields.video.fields.file.url" 
                 autoplay="true" 
                 muted="true" 
                 loop="true" 
@@ -31,7 +31,13 @@
 export default {
   props: [
     "projects"
-  ]
+  ],
+  computed: {
+    displayVideos() {
+      /* return true - display the videos - if we're not in small breakpoint */
+      return this.$mq !== 'sm'
+    }
+  }
 }
 </script>
 
