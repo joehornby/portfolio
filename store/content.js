@@ -2,7 +2,8 @@ import client from "~/plugins/contentful"
 
 export const state = () => ({
   homepage: null,
-  projects: null
+  projects: null,
+  selectedCategory: 'All'
 })
 
 export const mutations = {
@@ -11,6 +12,9 @@ export const mutations = {
   },
   updateProjects: (state, projects) => {
     state.projects = projects
+  },
+  updateSelectedCategory: (state, category) => {
+    state.selectedCategory = category
   }
 };
 

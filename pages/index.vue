@@ -2,7 +2,7 @@
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
-    <ProjectList :projects="projects" />
+    <ProjectList :projects="projects" :key="selectedCategory" />
   </div>
 </template>
 
@@ -29,6 +29,9 @@
       },
       projects() {
         return this.$store.state.content.projects
+      },
+      selectedCategory() {
+        return this.$store.state.content.selectedCategory
       }
     },
   }

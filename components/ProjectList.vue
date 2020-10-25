@@ -5,42 +5,44 @@
         <h3 class="filter">Filter by Category</h3>
         <CategoryButton 
           v-for="cat in categories" 
-          :key="cat" :category="cat" 
-          :selectedCategory.sync="selectedCategory"
-          v-on:updateCategory="selectedCategory" />
+          :key="cat" 
+          :category="cat" 
+          :selectedCategory.sync="selectedCategory" />
         
       </div>
       <ul>
-        <li class="work__list" v-for="(project, index) in filteredProjects" :key="project.fields.id">
-          <nuxt-link tabindex="0" :to="`/projects/${project.fields.slug}`" prefetch>
-            <h3 class="work__title">
-              {{ project.fields.title }}
-            </h3>
-          </nuxt-link>
-          <p class="work__details">
-              {{ project.fields.headline }}
-          </p>
-          <ul class="work__categories">
-            <li v-for="category in project.fields.categories" :key="category" class="work__category">
-              {{ category }}
-            </li>
-          </ul>
-          <video v-if="project.fields.video && index < 6 && displayVideos" :src="project.fields.video.fields.file.url" 
-              autoplay="true" 
-              muted="true" 
-              loop="true" 
-              controls />
-          
-        </li>
+        <transition-group name="slide-bottom">
+          <li class="work__list" v-for="(project, index) in filteredProjects" :key="project.fields.id">
+            <nuxt-link tabindex="0" :to="`/projects/${project.fields.slug}`" prefetch>
+              <h3 class="work__title">
+                {{ project.fields.title }}
+              </h3>
+            </nuxt-link>
+            <p class="work__details">
+                {{ project.fields.headline }}
+            </p>
+            <ul class="work__categories">
+              <li v-for="category in project.fields.categories" :key="category" class="work__category">
+                {{ category }}
+              </li>
+            </ul>
+            <video v-if="project.fields.video && index < 6 && displayVideos" :src="project.fields.video.fields.file.url" 
+                autoplay="true" 
+                muted="true" 
+                loop="true" 
+                controls />
+            
+          </li>
+        </transition-group>
       </ul>
     </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
   data() {
     return {
-      selectedCategory: 'All',
       categories: [
         'All',
         'Web',
@@ -52,10 +54,10 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.selectedCategory = this.$route.query.category ? this.$route.$query.category : "All"
-  },
   computed: {
+    selectedCategory() { 
+      return this.$store.state.content.selectedCategory
+    },
     projects() {
         return this.$store.state.content.projects
     },
@@ -71,7 +73,11 @@ export default {
       }
     }
   },
-  transition: 'slide-bottom'
+  methods: {
+    ...mapMutations({
+      updateSelectedCategory: 'content/updateSelectedCategory'
+    })
+  }
 }
 </script>
 
@@ -82,7 +88,7 @@ export default {
     li {
       border-top: 1px solid $dark-grey;
         list-style: none;
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
         display: grid;
         gap: 0 1rem;
         grid-template-columns: 1fr;

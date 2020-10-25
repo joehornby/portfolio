@@ -2,18 +2,28 @@
     <button
           class="category-btn"
           :class="{ 'category-btn__selected' : selectedCategory === category }"
-          @click="$emit('update:selectedCategory', category)"
+          @click="updateSelectedCategory(category)"
           >
             {{ category }}
     </button>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
   props: [
-    'category',
-    'selectedCategory'
-  ]
+    'category'
+  ],
+  methods: {
+    ...mapMutations({
+      updateSelectedCategory: 'content/updateSelectedCategory'
+    })
+  },
+  computed: {
+    selectedCategory() { 
+      return this.$store.state.content.selectedCategory
+    },
+  }
 }
 </script>
 
