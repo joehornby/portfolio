@@ -3,18 +3,8 @@
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
     <div class="work">
-      <div class="work__heading">
-        <h2 id="project-list">Selected Projects</h2>
-        <h3 class="filter">Filter by Category</h3>
-        <div class="filter__buttons">
-          <CategoryButton 
-            v-for="cat in categories" 
-            :key="cat" 
-            :category="cat" 
-            :selectedCategory.sync="selectedCategory" />
-        </div>
-      </div>
-      <transition name="slide-bottom">
+      <ProjectFilter />
+      <transition name="list">
         <ProjectList :projects="projects" :key="selectedCategory" />
       </transition>
     </div>
@@ -144,17 +134,6 @@
       max-width: 22ch;
     }
   }
-  }
-
-  
-
-  .slide-bottom-enter-active,
-  .slide-bottom-leave-active {
-    transition: opacity 0.5s ease-in-out;
-  }
-  .slide-bottom-enter,
-  .slide-bottom-leave-to {
-    opacity: 0;
   }
 
 </style>

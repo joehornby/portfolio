@@ -35,7 +35,8 @@ export default {
     padding: 0.75em 1.5em;
     margin: 0 0.2rem 0.2rem 0;
     background-color: $light-grey;
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: lighten($dark-grey, 20);
       color: $light-grey;
       cursor: pointer;

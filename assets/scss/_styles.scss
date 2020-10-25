@@ -113,3 +113,12 @@ a {
     // transform: scale(0.9);
     opacity: 0;
 }
+
+.list-enter-active,
+.list-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+}
