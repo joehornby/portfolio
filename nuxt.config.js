@@ -118,7 +118,7 @@ export default {
     }],
     ['nuxt-mq',
     {
-      defaultBreakpoint: 'md',
+      defaultBreakpoint: 'lg',
       breakpoints: {
         sm: 720,
         md: 1024,
