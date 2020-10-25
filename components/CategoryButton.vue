@@ -36,8 +36,12 @@ export default {
     margin: 0 0.2rem 0.2rem 0;
     background-color: $light-grey;
     &:hover {
-      background-color: $mid-grey;
+      background-color: lighten($dark-grey, 20);
+      color: $light-grey;
       cursor: pointer;
+    }
+    &:active {
+      background-color: $dark-grey;
     }
     &__selected {
       background-color: $dark-grey;
