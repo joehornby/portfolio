@@ -2,7 +2,22 @@
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
-    <ProjectList :projects="projects" :key="selectedCategory" />
+    <div class="work">
+      <div class="work__heading">
+        <h2 id="project-list">Selected Projects</h2>
+        <h3 class="filter">Filter by Category</h3>
+        <div class="filter__buttons">
+          <CategoryButton 
+            v-for="cat in categories" 
+            :key="cat" 
+            :category="cat" 
+            :selectedCategory.sync="selectedCategory" />
+        </div>
+      </div>
+      <transition name="slide-bottom">
+        <ProjectList :projects="projects" :key="selectedCategory" />
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -29,6 +44,9 @@
       },
       projects() {
         return this.$store.state.content.projects
+      },
+      categories(){
+        return this.$store.state.content.categories
       },
       selectedCategory() {
         return this.$store.state.content.selectedCategory
@@ -63,6 +81,8 @@
   }
 
   .work {
+    grid-area: work;
+    width: 100%;
     margin-top: 20vh;
     margin-bottom: 30vh;
     grid-area: work;
@@ -85,6 +105,26 @@
       display: none;
       grid-column: 2 / span 1;
     }
+    
+  }
+
+  /* Filter */
+
+  h3.filter,
+  .category-btn {
+    font-size: 0.66em;
+  }
+
+  h3.filter{
+    margin-top: 2rem;
+    padding-top: 1em;
+    margin-bottom: 1rem;
+  }
+
+  .filter {
+    &__buttons {
+      margin-bottom: 2rem;
+    }
   }
 
   @media screen and (min-width: $bp-md) {
@@ -96,6 +136,25 @@
                           "work work work ";
       
     }
+    .work {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .filter {
+    &__buttons {
+      max-width: 22ch;
+    }
+  }
+  }
+
+  
+
+  .slide-bottom-enter-active,
+  .slide-bottom-leave-active {
+    transition: opacity 0.5s ease-in-out;
+  }
+  .slide-bottom-enter,
+  .slide-bottom-leave-to {
+    opacity: 0;
   }
 
 </style>

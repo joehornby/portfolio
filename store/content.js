@@ -3,7 +3,16 @@ import client from "~/plugins/contentful"
 export const state = () => ({
   homepage: null,
   projects: null,
-  selectedCategory: 'All'
+  selectedCategory: 'All',
+  categories: [
+    'All',
+    'Web',
+    'Development',
+    'Design',
+    'Art',
+    'Immersive Technology',
+    'Sound'
+  ]
 })
 
 export const mutations = {
