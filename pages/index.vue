@@ -2,7 +2,6 @@
   <div class="home">
     <h2 class="headline">{{ home.fields.h2 }}</h2>
     <nuxt-link class="cta" :to="`/projects/${projects[0].fields.slug}`">{{ home.fields.cta }}</nuxt-link>
-    <!-- <ProjectListVideo :projects="projects.slice(0,3)" /> -->
     <ProjectList :projects="projects" />
   </div>
 </template>
@@ -26,10 +25,10 @@
     // Get content from store
     computed: {
       home() {
-        return this.$store.state.homepage
+        return this.$store.state.content.homepage
       },
       projects() {
-        return this.$store.state.projects
+        return this.$store.state.content.projects
       }
     },
   }
@@ -66,18 +65,12 @@
     grid-area: work;
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 
     &__heading {
       grid-column: 1 / span 1;
       padding-top: 0.5rem;
     }
-
-    ul {
-      grid-column: 2 / -1;
-    }
-
-
     
     &__titles {
       display: block;

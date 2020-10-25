@@ -2,7 +2,7 @@
     <div class="projects">
         <div class="projects__project">
             <ProjectList v-if="isProjectsRoot" :projects="projects" />
-            <nuxt-child else :key="$route.params.slug" :project="project"/>
+            <nuxt-child v-else :key="$route.params.slug" :project="project"/>
         </div>
         
         <nuxt-link v-if="!isProjectsRoot" class="back alt-focus" to="/projects">
@@ -39,17 +39,17 @@
         }
         },
         computed: {
+            projects() {
+                return this.$store.state.content.projects
+            },
             isProjectsRoot() {
                 return this.$route.name === 'projects'
             },
             project() {
-                return this.$store.state.projects.find ( p => p.fields.slug == this.$route.params.slug )
-            },
-            projects() {
-                return this.$store.state.projects
+                return this.$store.state.content.projects.find ( p => p.fields.slug == this.$route.params.slug )
             },
             totalProjects() {
-                return this.$store.state.projects.length
+                return this.$store.state.content.projects.length
             },
             nextProject() {
                 let link;
@@ -70,7 +70,7 @@
                     title = 'Thanks for looking'
                     buttonText = "Get in touch"
                 } else {
-                    let nextProject = this.$store.state.projects.find ( p => p.fields.id == ( currentId + 1 ) )
+                    let nextProject = this.$store.state.content.projects.find ( p => p.fields.id == ( currentId + 1 ) )
                     link = `/projects/${nextProject.fields.slug}`
                     title = nextProject.fields.title
                     buttonText = "Next project"

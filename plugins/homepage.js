@@ -1,3 +1,3 @@
 export default async ({ store }) => {
-  await store.dispatch("getHomepage")
+  await store.dispatch("content/getHomepage")
 }
