@@ -8,7 +8,8 @@
       <a href="https://www.linkedin.com/in/joehornby/">LinkedIn</a>
       <div class="contact__form">
         <h2>Contact form</h2>
-        <form name="contact" method="POST" data-netlify="true" action="/thanks">
+        <form name="contact" method="POST" netlify-honeypot="bot-field" action="/thanks" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
           <p>
             <label>Your Name: <input type="text" name="name" /></label>   
           </p>
